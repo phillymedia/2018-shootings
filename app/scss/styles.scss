@@ -80,7 +80,7 @@ body {
 
     100% {
         opacity: 0.85;
-        fill: #b12a90;
+        fill: #7a2ab1;
     }
 }
 
@@ -92,11 +92,11 @@ body {
 
     10% {opacity: 1;}
 
-    50% {fill: #f0f921;}
+    50% {fill: #f22822;}
 
     100% {
         opacity: 0.85;
-        fill: orange;
+        fill: #f22822;
     }
 }
 
@@ -110,6 +110,9 @@ body {
     right: 20px;
     top: 20px;
     text-align: right;
+    color: white;
+    font-size: 14px;
+    text-transform: uppercase;
 }
 
 .datecontainer {
@@ -117,11 +120,21 @@ body {
     color: #f0f921;
     font-family: $philly-sans;
     font-weight: 500;
+    padding-bottom: 10px;
 }
 
 .numCounter {
     font-size: 45px;
-    color: #f0f921;
+    color: #a960db;
     font-family: $philly-sans;
     font-weight: 900;
+    filter: drop-shadow(1px 2px #7a2ab1);
+}
+
+.numCounterDeath {
+    font-size: 45px;
+    color: #f22822;
+    font-family: $philly-sans;
+    font-weight: 900;
+    filter: drop-shadow(1px 2px #c1150f);
 }

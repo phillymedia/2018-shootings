@@ -48,6 +48,7 @@ svgOverlay.onInitData = function() {
     }
 
     var counter = 0;
+    var dcounter = 0;
 
     circles.each(function(d, i) {
         var elem = d3.select(this);
@@ -56,8 +57,10 @@ svgOverlay.onInitData = function() {
         if (d.geometry) {
             setTimeout(function() {
 
-                $(".datecontainer").html(getMonth(d.properties.date_.slice(5, 7)) + d.properties.date_.slice(8, 10) + " 2018")
+                $(".datecontainer").html(getMonth(d.properties.date_.slice(5, 7)) + " 2018")
                 $(".numCounter").html(counter ++)
+                $(".numCounterDeath").html(dcounter + d.properties.fatal)
+                dcounter = dcounter + d.properties.fatal;
 
                 var point = lmap.project(L.latLng(new L.LatLng(d.geometry.coordinates[1], d.geometry.coordinates[0])))._subtract(lmap.getPixelOrigin());
                 elem.attr('cx', point.x)
