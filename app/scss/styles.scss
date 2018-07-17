@@ -6,14 +6,20 @@ $numColors: length($colors);
 body {
     font-family: $philly-sans;
     margin: 0 auto;
+    background: black;
+}
+
+.leaflet-container .leaflet-control-attribution {
+    background: transparent;
+    color: gray;
 }
 
 .graphicWrapper {
     padding: 25px 10px;
     margin: 20px auto;
-    border-top: 1px solid $philly-lightgray;
-    border-bottom: 1px solid $philly-lightgray;
-    max-width: 100%;
+    // border-top: 1px solid $philly-lightgray;
+    // border-bottom: 1px solid $philly-lightgray;
+    max-width: 1000px;
 }
 
 .gradient {
@@ -92,7 +98,7 @@ body {
 
     10% {opacity: 1;}
 
-    50% {fill: #f22822;}
+    50% {fill: #f0f921;}
 
     100% {
         opacity: 0.85;
@@ -108,19 +114,19 @@ body {
     position: absolute;
     z-index: 100;
     right: 20px;
-    top: 20px;
+    bottom: 25%;
     text-align: right;
-    color: white;
+    color: gray;
     font-size: 14px;
     text-transform: uppercase;
 }
 
 .datecontainer {
-    font-size: 20px;
-    color: #f0f921;
+    font-size: 30px;
+    color: #ccc;
     font-family: $philly-sans;
-    font-weight: 500;
-    padding-bottom: 10px;
+    font-weight: 900;
+    padding-bottom: 30px;
 }
 
 .numCounter {
@@ -129,6 +135,7 @@ body {
     font-family: $philly-sans;
     font-weight: 900;
     filter: drop-shadow(1px 2px #7a2ab1);
+    padding-bottom: 10px;
 }
 
 .numCounterDeath {

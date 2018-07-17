@@ -1,6 +1,9 @@
 require("./L.SvgScaleOverlay");
 
 var newdata = require("./2018-shootings.geo.json");
+var json1 = require("./disolved1.json");
+var json2 = require("./disolved2.json");
+var json3 = require("./disolved3.json");
 
 var geojson = new L.geoJson(newdata);
 
@@ -9,27 +12,41 @@ var months = ['January','February','March','April','May','June','July','August',
 function getMonth(m) {
     return months[Number(m) - 1]
 }
-//  $(document).ready(function(){
-//  });
-var lmap = L.map('map').setView([
+
+var lmap = L.map('map',{
+    maxBounds: geojson.getBounds()
+}).setView([
     39.9826, -75.1652
 ], 12);
-L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}' + (
+// https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}
+L.tileLayer('http://{s}.sm.mapstack.stamen.com/(toner-lite,$fff[difference],$000[@60])/{z}/{x}/{y}' + (
     L.Browser.retina
     ? '@2x'
     : '') + '.png', {
-    // minZoom: 13,
-    // maxZoom: 17,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy;<a href="https://carto.com/attribution">CARTO</a>'
 }).addTo(lmap);
-// map.scrollWheelZoom.disable();
+
+lmap.scrollWheelZoom.disable();
+
+var myStyle = {
+    "fillColor": "#000000",
+    'color':"white",
+    "weight": 2,
+    "opacity": 0.5,
+    'fillOpacity':0.65
+};
+
+
+L.geoJson(json1, {style:myStyle}).addTo(lmap);
+L.geoJson(json2, {style:myStyle}).addTo(lmap);
+L.geoJson(json3, {style:myStyle}).addTo(lmap);
 
 var newMapData = newdata.features;
 
 // lmap.fitBounds(geojson.getBounds());
 
 // var lmap = new  L.map('map').setView([39.9526, -75.1652], 14)
-//                        .addLayer(L.tileLayer("http://{s}.sm.mapstack.stamen.com/(toner-lite,$fff[difference],$fff[@23],$fff[hsl-saturation@20])/{z}/{x}/{y}.png"));
+// lmap.addLayer(L.tileLayer("http://{s}.sm.mapstack.stamen.com/(toner-lite,$fff[difference],$000[@60])/{z}/{x}/{y}.png"));
 
 var circles;
 
@@ -128,3 +145,12 @@ svgOverlay.onScaleChange = function(scaleDiff) {
 
 lmap.addLayer(svgOverlay);
 /***********************/
+
+
+
+
+fetch('https://phl.carto.com/api/v2/sql?q=SELECT%20*%20FROM%20shootings%20WHERE%20year%20=%202018')
+  .then((resp) => resp.json()) // Transform the data into json
+  .then(function(data) {
+      console.log(data.rows)
+    })
