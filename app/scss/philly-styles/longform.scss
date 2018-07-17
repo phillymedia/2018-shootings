@@ -1,0 +1,274 @@
+@import "values";
+
+.headerIntro {
+    position: relative;
+    width: auto;
+    height: auto;
+}
+
+.backgroundImage {
+    position: relative;
+    width: auto;
+    height: 100%;
+    min-height: 750px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #000;
+    background-image: url("http://media.philly.com/images/102515-Philadelphia-skyline.jpg");
+    @include tablet {
+        min-height: 500px;
+        background-size: contain;
+        min-height: 100%;
+        padding-bottom: percentage(800/1200)-5;
+        background-position: top;
+    }
+}
+
+.overlayText {
+    position: absolute;
+    top: auto;
+    bottom: 20%;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    color: #fff;
+    font-family: $philly-sans;
+    font-weight: 600;
+    letter-spacing: -5px;
+    line-height: normal;
+    text-shadow: 0 0 15px #000;
+    font-size: 80px;
+
+    @include tablet {
+        font-size: 68px;
+        padding: 0 10px;
+    }
+    @include mobile {
+        position: relative;
+        top: inherit;
+        bottom: inherit;
+    color: #000;
+    text-shadow: none !important;
+    padding: 30px 10px 10px 10px;
+    margin-bottom: .625rem;
+    font-weight: 800;
+    letter-spacing: -.0625rem;
+    font-size: 2.5rem;
+    line-height: 1.05;
+    }
+}
+
+.backgroundImageCredit {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 11px;
+    color: #fff;
+    z-index: 1;
+    font-family: $philly-sans;
+    @include mobile {
+        bottom: 14px;
+    }
+}
+
+.headerSection {
+    position: relative;
+    z-index: 5;
+    padding: 20px 12px;
+    margin: 0 auto;
+
+    @include mobile {
+      padding-top: 5px;
+      padding-bottom: 8px;
+   }
+}
+
+.BackgroundImageCaption {
+    color: #888;
+    margin-top: -0.75em;
+    margin-left: 1em;
+    font-size: 13px;
+    font-family: $philly-sans;
+    @include mobile {
+        display: none;
+    }
+}
+
+.headDisplay {
+    max-width: 800px;
+    margin: 0 auto;
+    display: block;
+    position: relative;
+}
+
+.subHead {
+    font-family: $philly-serif;
+    margin: 40px auto 20px;
+    font-size: 24px;
+    line-height: 1.5em;
+    font-weight: bold;
+    @include mobile {
+        margin: 20px auto 15px;
+    }
+}
+
+.byline {
+    line-height: 2.25em;
+    top: 15px;
+    font-family: $philly-sans;
+    color: #777;
+    font-size: 16px;
+}
+
+.dateline {
+    font-family: $philly-sans;
+    color: #777777;
+    font-size: 12px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    line-height: 2.25em;
+    clear:both;
+    @include mobile {
+      padding-top: 30px;
+    }
+}
+
+.bodyContainer {
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+.imagebreak {
+    margin: 40px 0 50px 0;
+    @include mobile {
+        margin: 18px 0 30px 0;
+    }
+}
+.dropCap{
+float: left;
+    color: #222;
+    font-size: 59px;
+    padding-top: 18px;
+    padding-right: 8px;
+    font-weight: 100;
+    padding-left: 3px;
+    font-family: $philly-serif;
+}
+
+.containerPhotoCredit {
+   padding: 0 12px;
+}
+.containerPhotoCaption {
+   padding: 0 12px;
+}
+
+// ----------- ADS CSS --------------------
+.adUnitWrapper {
+    padding: 0 !important;
+}
+
+.adUnitWrapper {
+    background-color: transparent !important;
+    /*overrides the default grey*/
+}
+// ----------- RECIRC BOX --------------------
+
+#379984091 {
+    margin: 0 3%;
+}
+
+h1.sf-header__heading.dib.va--middle {
+    max-width: 1200px;
+    margin: 20px auto 30px;
+    display: block;
+    font-weight: 100;
+}
+
+#recircBox {
+    font-family:$philly-sans;
+    background-color: #222222;
+    color: #ffffff;
+    padding: 11px;
+    border-top: 7px solid #B63321;
+}
+
+#recircSpecials {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.black,
+.black a {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.block__list-item-flex.with-dividers {
+    border-right: 1px solid #545454;
+}
+
+.kicker {
+    color: #E86A58;
+    display: none;
+}
+// -----------BOOTSTRAP FIX--------------------
+body,
+html {
+    font-size: 16px !important;
+    font-family: $philly-sans;
+}
+
+.rel.primary-nav__wrap.ovh {
+    font-family: $philly-sans;
+}
+
+p {
+    font-family: $philly-serif;
+    margin-bottom: 1.25em !important;
+    font-size: 18px;
+    line-height: 1.9em;
+}
+
+.progress {
+    position: fixed !important;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 0.25rem !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: none;
+    background-color: #B63321 !important;
+    color: #B63321 !important;
+    z-index: 1000;
+}
+
+.video {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+@media screen and (max-width: 600px) {
+    .extrabottompadding {
+        padding-bottom: 15px;
+    }
+
+    .containerCarouselCaption {
+        bottom: -70px !important;
+    }
+
+    .containerVideoCaption {
+        bottom: -45px !important;
+    }
+}
+.bodyContainer a {
+   cursor: pointer;
+    color: #0061A2;
+    box-shadow: inset -2px -5px 0px -2px #d5eeff;
+    @include transition(box-shadow 0.3s cubic-bezier(0.86, 0, 0.07, 1));
+}
+.bodyContainer a:hover {
+    box-shadow: inset -2px -20px 0px -3px #d5eeff;
+    text-decoration: none;
+}

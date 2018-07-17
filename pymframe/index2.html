@@ -1,0 +1,92 @@
+<!--removeIf(pymframe)-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>leaflet-svg-test</title>
+    <link rel="icon" type="image/png" href="//media.philly.com/designimages/favicon-32x32.png">
+
+  <!--removeIf(tmp)-->
+  <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/7722894/765348/css/fonts.css">
+  <script type="text/javascript" src="http://media.philly.com/storage/inquirer/script/pym.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var pymChild = new pym.Child();
+      pym.Child({ polling: 100 });
+      pymChild.sendHeight();
+    //   var t = setTimeout(function() {
+    //     pymChild.sendHeight();
+    //     console.log("pym Started")
+    //   }, 2000);
+    }, false);
+  </script>
+  <!--endRemoveIf(tmp)-->
+</head>
+
+<body>
+  <!--endRemoveIf(pymframe)-->
+
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+<link rel="stylesheet" href="http://media.philly.com/storage/inquirer/script/leaflet/leaflet-0.7.7-2017.css">
+
+  <!--removeIf(tmp)-->
+
+  <style>
+    /* body,
+    html {
+      width: auto;
+      height: auto;
+      display: inline-block;
+    } */
+  </style>
+  <!--endRemoveIf(tmp)-->
+
+
+  <style>
+.aspect-ratio-outer{width:100%;position:relative}.aspect-ratio-outer .aspect-ratio-inner{height:90vh;position:relative}.aspect-ratio-outer #map{position:absolute;top:0;left:0;width:100%;height:100%}.map-container{position:relative}.legend{position:absolute;bottom:10px;left:10px;padding:6px 8px;font-size:12px;font-family:Gotham Narrow SSm A,Gotham Narrow SSm B,Gotham Narrow,Arial,sans-serif;background:#fff;background:hsla(0,0%,100%,.8);border-radius:5px}@media only screen and (max-width:720px){.legend{position:relative;width:100%;bottom:0;left:0}}.legend h1{margin:0;padding:5px 5px 5px 0;text-align:left;font-size:14px;text-transform:uppercase;line-height:1.5}.legend ul.scale{padding:0;margin:0;list-style-type:none;overflow:auto;padding-bottom:8px}.legend ul.scale li{line-height:18px;margin-bottom:2px}@media only screen and (max-width:720px){.legend ul.scale li{float:left;text-align:center;width:100%/5}}.legend ul.scale .block{width:2em;height:12px;display:inline-block;vertical-align:text-top}@media only screen and (max-width:720px){.legend ul.scale .block{display:block;width:auto}}.source{font-size:12px;padding:10px 0;color:#999;clear:both;font-style:italic}.source .credit{font-style:normal;text-transform:uppercase;display:inline-block;float:right}body{font-family:Gotham Narrow SSm A,Gotham Narrow SSm B,Gotham Narrow,Arial,sans-serif;margin:0 auto}.graphicWrapper{padding:25px 10px;margin:20px auto;border-top:1px solid #d9d9d9;border-bottom:1px solid #d9d9d9;max-width:100%}.gradient{display:flex}.gradient .gradientbar{height:100px;width:20px;border:#f0f921;background:linear-gradient(#0d0887,#42039d,#6b00a8,#900da3,#b12a90,#cb4778,#e16461,#f3834c,#fca736,#fdce25,#f0f921)}.gradient .gradientlabels{padding-left:6px;display:flex;flex-wrap:wrap;align-content:space-between}.gradient .gradientlabels span{-ms-flex:1 1 100%;flex:1 1 100%}.heading{margin:10px 0;font-size:22px}.description{padding:0;margin:0;font-family:Sentinel SSm A,Sentinel SSm B,Sentinel,Times New Roman,serif;font-size:16px;line-height:1.6}.source{font-size:13px;font-family:Gotham Narrow SSm A,Gotham Narrow SSm B,Gotham Narrow,Arial,sans-serif;color:#666;display:block;text-align:left;padding:4px 0 0}.source:first-of-type{padding-top:20px}.credit{text-align:right}
+</style>
+
+  <div class="graphicWrapper">
+    <div class="aspect-ratio-outer">
+        <div class="aspect-ratio-inner">
+            <div id="map"></div>
+        </div>
+        <div class="legend">
+            <h1>Map legend</h1>
+            <div class="gradient">
+                <div class="gradientbar"></div>
+                <div class="gradientlabels">
+                    <span>2008</span>
+                    <span>2018</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="source">Source: xxxXXX</div>
+    <div class="source credit">Credit: xxxXXX</div>
+
+</div>
+ <script src="http://www.philly.com/includes/e32121b31e345f561b84372c2bf06282/jquery-2.0.0b2.js" type="text/javascript"></script>
+<script src="http://media.philly.com/storage/inquirer/script/leaflet/leaflet-0.7.7-2017.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
+
+<!-- <script src="https://use.fontawesome.com/8208ab3437.js"></script> -->
+ <script src="http://www.sumbera.com/gist/data.js" charset="utf-8"></script>
+ <script src="./data.js" charset="utf-8"></script>
+
+
+  <script>
+(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){L.Map.prototype.latLngToLayerPoint=function(latlng){var projectedPoint=this.project(L.latLng(latlng));return projectedPoint._subtract(this.getPixelOrigin())};L.Map.prototype._getNewPixelOrigin=function(center,zoom){var viewHalf=this.getSize()._divideBy(2);return this.project(center,zoom)._subtract(viewHalf)._add(this._getMapPanePos())};L.Map.prototype.getZoomScale=function(toZoom,fromZoom){var crs=this.options.crs;fromZoom=fromZoom===undefined?this._zoom:fromZoom;return crs.scale(toZoom)/crs.scale(fromZoom)};L.SVGScaleOverlay=L.Class.extend({options:{pane:"overlayPane",nonBubblingEvents:[],padding:0},isLeafletVersion1:function(){return L.Layer?true:false},initialize:function(options){L.setOptions(this,options);L.stamp(this)},getScaleDiff:function(zoom){var zoomDiff=this._groundZoom-zoom;var scale=zoomDiff<0?Math.pow(2,Math.abs(zoomDiff)):1/Math.pow(2,zoomDiff);return scale},initSvgContainer:function(){var xmlns="http://www.w3.org/2000/svg";this._svg=document.createElementNS(xmlns,"svg");this._g=document.createElementNS(xmlns,"g");if(!this.isLeafletVersion1()){L.DomUtil.addClass(this._g,"leaflet-zoom-hide")}var size=this._map.getSize();this._svgSize=size;this._svg.setAttribute("width",size.x);this._svg.setAttribute("height",size.y);this._svg.appendChild(this._g);this._groundZoom=this._map.getZoom();this._shift=new L.Point(0,0);this._lastZoom=this._map.getZoom();var bounds=this._map.getBounds();this._lastTopLeftlatLng=new L.LatLng(bounds.getNorth(),bounds.getWest())},resize:function(e){var size=this._map.getSize();this._svgSize=size;this._svg.setAttribute("width",size.x);this._svg.setAttribute("height",size.y)},moveEnd:function(e){var bounds=this._map.getBounds();var topLeftLatLng=new L.LatLng(bounds.getNorth(),bounds.getWest());var topLeftLayerPoint=this._map.latLngToLayerPoint(topLeftLatLng);var lastLeftLayerPoint=this._map.latLngToLayerPoint(this._lastTopLeftlatLng);var zoom=this._map.getZoom();var scaleDelta=this._map.getZoomScale(zoom,this._lastZoom);var scaleDiff=this.getScaleDiff(zoom);if(this._lastZoom!=zoom){if(typeof this.onScaleChange=="function"){this.onScaleChange(scaleDiff)}}this._lastZoom=zoom;var delta=lastLeftLayerPoint.subtract(topLeftLayerPoint);this._lastTopLeftlatLng=topLeftLatLng;L.DomUtil.setPosition(this._svg,topLeftLayerPoint);this._shift._multiplyBy(scaleDelta)._add(delta);this._g.setAttribute("transform","translate("+this._shift.x+","+this._shift.y+") scale("+scaleDiff+")")},animateSvgZoom:function(e){var scale=this._map.getZoomScale(e.zoom,this._lastZoom),offset=this._map._latLngToNewLayerPoint(this._lastTopLeftlatLng,e.zoom,e.center);L.DomUtil.setTransform(this._svg,offset,scale)},getEvents:function(){var events={resize:this.resize,moveend:this.moveEnd};if(this._zoomAnimated&&this.isLeafletVersion1()){}return events},_layerAdd:function(e){this.onAdd(e.target)},onAdd:function(map){if(!map.hasLayer(this)){return}this._map=map;this._zoomAnimated=map._zoomAnimated;if(!this._svg){this.initSvgContainer();if(this._zoomAnimated){L.DomUtil.addClass(this._svg,"leaflet-zoom-hide")}}var pane=this._map.getPanes().overlayPane;pane.appendChild(this._svg);if(typeof this.onInitData=="function"){this.onInitData()}if(this.getAttribution&&this._map.attributionControl){this._map.attributionControl.addAttribution(this.getAttribution())}if(this.getEvents){map.on(this.getEvents(),this)}map.fire("layeradd",{layer:this})},onRemove:function(){L.DomUtil.remove(this._svg)}});L.SvgScaleOverlay=function(options){return new L.SVGScaleOverlay(options)}},{}],2:[function(require,module,exports){require("./L.SvgScaleOverlay");var lmap=L.map("map").setView([39.9526,-75.1652],14);L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}"+(L.Browser.retina?"@2x":"")+".png",{minZoom:13,maxZoom:17,attribution:'&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy;<a href="https://carto.com/attribution">CARTO</a>'}).addTo(lmap);var newMapData=mapData.features;var circles;var svgOverlay=L.SvgScaleOverlay();var radius=2.5;svgOverlay.onInitData=function(){if(!circles){var g=d3.select(this._g);circles=g.selectAll("circle").data(newMapData).enter().append("circle");circles.style("fill-opacity",.85);circles.style("fill","rgba(255,116,116, 0.5)")}circles.each(function(d,i){var elem=d3.select(this);if(d.geometry){var point=lmap.project(L.latLng(new L.LatLng(d.geometry.coordinates[1],d.geometry.coordinates[0])))._subtract(lmap.getPixelOrigin());elem.attr("cx",point.x);elem.attr("cy",point.y);elem.attr("r",radius);if(d.properties.dateNum>0){elem.style("fill","#0d0887")}if(d.properties.dateNum>2009e4){elem.style("fill","#42039d")}if(d.properties.dateNum>201e5){elem.style("fill","#6b00a8")}if(d.properties.dateNum>2011e4){elem.style("fill","#900da3")}if(d.properties.dateNum>2012e4){elem.style("fill","#b12a90")}if(d.properties.dateNum>2013e4){elem.style("fill","#cb4778")}if(d.properties.dateNum>2014e4){elem.style("fill","#e16461")}if(d.properties.dateNum>2015e4){elem.style("fill","#f3834c")}if(d.properties.dateNum>2016e4){elem.style("fill","#fca736")}if(d.properties.dateNum>2017e4){elem.style("fill","#fdce25")}if(d.properties.dateNum>2018e4){elem.style("fill","#f0f921")}}})};svgOverlay.onScaleChange=function(scaleDiff){if(scaleDiff>.5){var newRadius=radius*1/scaleDiff;var currentRadius=d3.select("circle").attr("r");if(currentRadius!=newRadius){d3.selectAll("circle").attr("r",newRadius)}}};lmap.addLayer(svgOverlay)},{"./L.SvgScaleOverlay":1}]},{},[2]);
+</script>
+
+  <!--removeIf(pymframe)-->
+</body>
+
+</html>
+<!--endRemoveIf(pymframe)-->

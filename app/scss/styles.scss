@@ -1,0 +1,127 @@
+@import 'philly-styles/values';
+@import 'map';
+$colors: #0d0887,#42039d,#6b00a8,#900da3,#b12a90,#cb4778,#e16461,#f3834c,#fca736,#fdce25,#f0f921;
+$numColors: length($colors);
+
+body {
+    font-family: $philly-sans;
+    margin: 0 auto;
+}
+
+.graphicWrapper {
+    padding: 25px 10px;
+    margin: 20px auto;
+    border-top: 1px solid $philly-lightgray;
+    border-bottom: 1px solid $philly-lightgray;
+    max-width: 100%;
+}
+
+.gradient {
+    display: flex;
+
+    .gradientbar {
+        height: 100px;
+        width: 20px;
+        $g: nth($colors, 1);
+        @for $h from 2 to ($numColors + 1) {
+            $g: $g , nth($colors, $h);
+        }
+        border: $g;
+        background: linear-gradient($g);
+    }
+
+    .gradientlabels {
+        padding-left: 6px;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: space-between;
+
+        span {
+            @include flex(1 1 100%);
+        }
+    }
+}
+
+.heading {
+    margin: 10px 0;
+    font-size: 22px;
+}
+
+.description {
+    padding: 0;
+    margin: 0;
+    font-family: $philly-serif;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.source {
+    font-size: 13px;
+    font-family: $philly-sans;
+    color: $philly-gray;
+    display: block;
+    text-align: left;
+    padding: 4px 0 0;
+
+    &:first-of-type {
+        padding-top: 20px;
+    }
+}
+
+.credit {
+    text-align: right;
+}
+@include keyframes(grow) {
+    0% {opacity: 0.1;}
+
+    10% {opacity: 1;}
+
+    50% {fill: #f0f921;}
+
+    100% {
+        opacity: 0.85;
+        fill: #b12a90;
+    }
+}
+
+.addedDot {
+    @include animation(grow 0.5s linear forwards);
+}
+@include keyframes(growFatal) {
+    0% {opacity: 0.1;}
+
+    10% {opacity: 1;}
+
+    50% {fill: #f0f921;}
+
+    100% {
+        opacity: 0.85;
+        fill: orange;
+    }
+}
+
+.addedDotFatal {
+    @include animation(growFatal 0.5s linear forwards);
+}
+
+.labelWrapper {
+    position: absolute;
+    z-index: 100;
+    right: 20px;
+    top: 20px;
+    text-align: right;
+}
+
+.datecontainer {
+    font-size: 20px;
+    color: #f0f921;
+    font-family: $philly-sans;
+    font-weight: 500;
+}
+
+.numCounter {
+    font-size: 45px;
+    color: #f0f921;
+    font-family: $philly-sans;
+    font-weight: 900;
+}

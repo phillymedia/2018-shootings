@@ -1,0 +1,235 @@
+@import "values";
+
+.containerTextTitleText {
+    margin-bottom: -2px;
+    font-family: "Gotham Narrow SSm A", "Gotham Narrow SSm B", "Arial", sans-serif;
+    text-align: left;
+    padding-top: 0px !important;
+    z-index: 100;
+    font-size: 34px;
+    color: #b73342;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    left: -50px;
+    font-weight: 200;
+}
+.containerImageTitleText {
+top:initial;
+    left: 2% !important;
+    color: #222 !important;
+    font-family: "Sentinel SSm A","Sentinel SSm B",Times,"Times New Roman",serif;
+    font-size: 65px;
+    font-weight: 400;
+    letter-spacing: -1px;
+    line-height: normal;
+    padding: 20px 30px;
+    text-shadow: none;
+    width: 60%;
+    position: absolute;
+    /* text-shadow: 0 0px 8px rgba(0,0,0,1) !important; */
+    /* background-color: rgba(0,0,0,0.6); */
+    bottom: 27%;
+    /* text-align: right; */
+}
+
+
+.contentWrapper {
+    overflow:hidden;
+}
+.containerPhotoCaption {
+    color: #888;
+    font-size: 13px;
+    font-family: "Gotham Narrow SSm A", "Gotham Narrow SSm B", "Arial", sans-serif;
+}
+
+
+
+
+.dropCap{
+float: left;
+    color: #222;
+    font-size: 59px;
+    padding-top: 18px;
+    padding-right: 8px;
+    font-weight: 100;
+    padding-left: 3px;
+    font-family: "Sentinel SSm A","Sentinel SSm B",Times,"Times New Roman",serif;
+}
+
+.mainphotocaption{
+font-family: "Gotham Narrow SSm A", "Gotham Narrow SSm B", "Arial", sans-serif;
+font-size:12px;
+color:#6c6c6c !important;
+width:15%;
+float:left;
+margin-left:2%;
+margin-top:-60px;
+line-height:1.5em
+}
+
+.containerPhotoCaption{
+margin-top:1em
+}
+.containerPhotoRight{
+padding-left:70px;
+}
+.more-block img{
+width:100%;
+height:125px
+}
+.more-block{
+width:20%;
+display:inline-block
+}
+.more-text{
+font-family: "Sentinel SSm A","Sentinel SSm B",Times,"Times New Roman",serif;
+font-size:16px;
+line-height:1.5em;
+margin-bottom:7px
+}
+.left{
+margin-right:2%;
+}
+
+#title_text{
+font-family:Georgia, Times, serif;
+}
+.mobile{
+display:none
+}
+.containerPhotoCaption{
+margin-top:1em
+}
+.smallerRightImage {
+width:69%;
+float:right;
+margin-left:-13em;
+}
+
+.containerTextSubhead {
+    font-family: "Sentinel SSm A","Sentinel SSm B",Times,"Times New Roman",serif;
+    margin-top: 40px;
+font-size:24px ;
+line-height:1.5em;
+}
+
+
+
+
+
+.containerImageTitle::before {
+     background:none;
+}
+.containerTextByline{
+    position:relative;
+    line-height:2.25em;
+    top:15px;
+    font-family: "Gotham Narrow SSm A", "Gotham Narrow SSm B", "Arial", sans-serif;
+}
+
+
+#pubDate{
+  font-weight: bold;
+  color: #888;
+  font-family: "Gotham Narrow SSm A", "Gotham Narrow SSm B", "Arial", sans-serif;
+  font-size:11px;
+   margin: 40px auto -20px auto;
+}
+.containerBodyText{
+ padding-top:20px;
+}
+.containerBodyText p {
+  font-size: 18px;
+  line-height: 1.9em;
+font-family: "Sentinel SSm A","Sentinel SSm B",Times,"Times New Roman",serif;
+}
+
+
+
+
+.containerTextPart, .containerTextTitle, .containerQuoteText, .containerPromoText span {
+	color:#222;
+}
+#qOne{
+    margin: 10px 25px 10px -200px;
+}
+
+
+.containerTextTitle:before {
+border-top:1px solid #aaa;
+background:none;
+left:0;
+width:100%
+}
+
+.containerTextTitle{
+margin-bottom:0em;
+}
+
+.containerTextdate{
+
+    font-family: "Gotham Narrow SSm A", "Gotham Narrow SSm B", "Arial", sans-serif;
+    color: #777777;
+    font-size: 12px;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+   margin-bottom:50px;
+}
+.containerQuote {
+  border-top: 1px solid #aaa;
+  border-bottom: 1px solid #aaa;
+  margin-left: -11%;
+  max-width: 46%;
+  margin-right: 5%;
+  margin-bottom: 20px;
+  margin-top: 20px;
+    padding: 40px 0 !important;
+    @media only screen and (max-width : 600px){
+     width: 100%;
+     max-width: 100%;
+     margin-left: 0 !important;
+ }
+}
+.containerQuoteText{
+font-family: "Sentinel SSm A","Sentinel SSm B",Times,"Times New Roman",serif;
+font-weight:400;
+line-height:1.25em;
+font-size:38px;
+text-align: left !important
+}
+.containerQuoteSource{
+color: #888;
+    font-family: "Gotham Narrow SSm A","Gotham Narrow SSm B","Arial",sans-serif;
+    font-size: 16px;
+}
+
+.containerMedia{
+padding:30px 0;
+}
+.containerMainHead{
+font-family: "Sentinel SSm A","Sentinel SSm B",Times,"Times New Roman",serif;
+font-weight:400;
+font-size:98px;
+margin-top:40px;
+margin-bottom:30px
+}
+
+#relatedlink{
+    border-top: 1px solid #ddd;
+     border-bottom: 1px solid #ddd;
+    padding: 10px 10px;
+    height: auto;
+    position: static;
+    margin: 20px 30px 20px -150px;
+    width:220px;
+    float:left;
+}
+
+#relatedlink ul{
+ font: 200 14px/1.3 georgia,tahoma,verdana,sans-serif;
+}
+#relatedlink li {
+    list-style-type: none;
+    padding-bottom: 10px;
+}
