@@ -1,29 +1,29 @@
 <div class="graphicWrapper">
+
+
     <div class="aspect-ratio-outer">
         <div class="aspect-ratio-inner">
             <div class="labelWrapper">
-                <div class="datecontainer">Date</div>
-                Total shootings: <div class="numCounter">counter</div>
-                <span>Fatal shootings:</span> <div class="numCounterDeath">counter</div>
+                <div class="datecontainer"></div>
+                <div class="slidecontainer">
+                  <input type="range" min="1" max="100" value="0" class="slider" id="myRange">
+                      <div class="sliderdate"></div>
+                </div>
+
+                Total shootings:
+                <div class="numCounter">0</div>
+                <span>Fatal shootings:</span>
+                <div class="numCounterDeath">0</div>
+
+
             </div>
 
             <div id="map"></div>
         </div>
-        <!-- <div class="legend">
-            <h1>Map legend</h1>
-            <div class="gradient">
-                <div class="gradientbar"></div>
-                <div class="gradientlabels">
-                    <span>2008</span>
-                    <span>2018</span>
-                </div>
-            </div>
-
-        </div> -->
     </div>
+    <div class="lastupdated"></div>
 
-
-    <div class="source">Source: xxxXXX</div>
-    <div class="source credit">Credit: xxxXXX</div>
+    <div class="source">Source: <a href="https://www.opendataphilly.org/dataset/shooting-victims">Philadelphia Police Department</a></div>
+    <div class="source credit">Credit: GARLAND POTTS / Staff</div>
 
 </div>
