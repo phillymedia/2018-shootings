@@ -1,4 +1,6 @@
 require("./L.SvgScaleOverlay");
+require("./calendar.js");
+
 
 var newdata = require("./2018-shootings.geo.json");
 var json1 = require("./disolved1.json");
