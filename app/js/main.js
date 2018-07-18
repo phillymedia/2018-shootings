@@ -1,4 +1,6 @@
 require("./L.SvgScaleOverlay");
+require("./calendar.js");
+
 
 // var newdata = require("./2018-shootings.geo.json");
 var json1 = require("./disolved1.json");
@@ -187,6 +189,7 @@ $(window).load(function() {
             })
 
 
+
             $(".numCounterDeath").html($(".Fatalslider").length)
 
             var slidecircles = $(".slideback");
@@ -194,5 +197,6 @@ $(window).load(function() {
             $(".datecontainer").html(getTheMonth(newdate.slice(5, 7)) + " 2018")
             $(".sliderdate").html(`${getTheMonth(newdate.slice(5, 7))} ${Number(newdate.slice(8, 10))}` )
         }
+
     })
 });
