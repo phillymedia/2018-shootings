@@ -154,5 +154,5 @@ lmap.addLayer(svgOverlay);
 fetch('https://phl.carto.com/api/v2/sql?q=SELECT%20*%20FROM%20shootings%20WHERE%20year%20=%202018')
   .then((resp) => resp.json()) // Transform the data into json
   .then(function(data) {
-      console.log(data.rows)
+      // console.log(data.rows)
     })

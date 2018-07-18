@@ -40,7 +40,7 @@ for (var d = new Date(2018, 0, 1); d <= now; d.setDate(d.getDate() + 1)) {
     month_cur = "#" + month[d.getMonth()];
   }
   if (d.getMonth() == month_index) {
-    $(month_cur).find(".month-inner").append("<div class='day' data-longdate='"+d.toDateString()+"' data-day='" + d.getDay() + "' data-date='" + iso + "'><div class='day-inner' data-count='0'></div></div>")
+    $(month_cur).find(".month-inner").append("<div class='day' data-longdate='" + d.toDateString() + "' data-day='" + d.getDay() + "' data-date='" + iso + "'><div class='day-inner' data-count='0'></div></div>")
   }
   var month_index = d.getMonth()
 }
@@ -75,15 +75,13 @@ function normalize(val) {
   return (val - 0) / (Math.max.apply(null, count_range) - 0);
 }
 
-
 // $(".day").each(function() {
 //   var count_day = $(this).find(".day-inner").attr("data-count");
 //   count_range.push(Number(count_day));
 // });
 // console.log(Math.max.apply(null, count_range));
 
-
-var color_ramp = ['#f0f921','#d4d93e','#b7b94e','#9b9a57','#7f7d5d','#616161']
+var color_ramp = ['#f0f921', '#d4d93e', '#b7b94e', '#9b9a57', '#7f7d5d', '#616161']
 
 $(".day").each(function() {
   var count_day = $(this).find(".day-inner").attr("data-count");
@@ -94,40 +92,62 @@ $(".day").each(function() {
 $(".day").each(function() {
   var count_day = $(this).find(".day-inner").attr("data-count");
 
-if (normalize(count_day) >= 0.9) {
-  $(this).find(".day-inner").css("background-color", color_ramp[0])
-}
+  if (normalize(count_day) >= 0.9) {
+    $(this).find(".day-inner").css("background-color", color_ramp[0])
+  }
 
-if (normalize(count_day) < 0.9 && normalize(count_day) >= 0.7) {
-  $(this).find(".day-inner").css("background-color", color_ramp[1])
-}
+  if (normalize(count_day) < 0.9 && normalize(count_day) >= 0.7) {
+    $(this).find(".day-inner").css("background-color", color_ramp[1])
+  }
 
-if (normalize(count_day) < 0.7 && normalize(count_day) >= 0.5) {
-  $(this).find(".day-inner").css("background-color", color_ramp[2])
-}
+  if (normalize(count_day) < 0.7 && normalize(count_day) >= 0.5) {
+    $(this).find(".day-inner").css("background-color", color_ramp[2])
+  }
 
-if (normalize(count_day) < 0.5 && normalize(count_day) >= 0.3) {
-  $(this).find(".day-inner").css("background-color", color_ramp[3])
-}
+  if (normalize(count_day) < 0.5 && normalize(count_day) >= 0.3) {
+    $(this).find(".day-inner").css("background-color", color_ramp[3])
+  }
 
-if (normalize(count_day) < 0.3 && normalize(count_day) >= 0.1) {
-  $(this).find(".day-inner").css("background-color", color_ramp[4])
-}
+  if (normalize(count_day) < 0.3 && normalize(count_day) >= 0.1) {
+    $(this).find(".day-inner").css("background-color", color_ramp[4])
+  }
 
-if (normalize(count_day) < 0.1) {
-  $(this).find(".day-inner").css("background-color", color_ramp[5])
-}
+  if (normalize(count_day) < 0.1) {
+    $(this).find(".day-inner").css("background-color", color_ramp[5])
+  }
 
-$(this).attr("title","<h3>"+$(this).data("longdate")+"</h3><div class='sub'>Number of shootings: "+count_day+"</div>");
+  $(this).attr("title", "<h3>" + $(this).data("longdate") + "</h3><div class='sub'>Number of shootings: " + count_day + "</div>");
 
 });
 
+function onlyUnique(value, index, self) {
+    return self.indexOf(value) === index;
+}
+
+function sortNumber(a,b) {
+    return a - b;
+}
+
+var unique_count = count_range.filter( onlyUnique );
+unique_count.sort(sortNumber);
+var count_interval = Math.ceil(unique_count.length/6)
+var count_legend = [];
+for (var i = 0; i < unique_count.length && count_legend.length < 6; i += count_interval) count_legend.push(unique_count[i]);
+console.log(count_legend)
+
+
+$("#calendar").before("<div id='calendar-legend'><span>Number of shootings per day</span><div id='calendar-legend-inner'></div></div>");
+var i;
+for (i = 0; i < count_legend.length; i++) {
+    $("#calendar-legend-inner").prepend("<div class='legend-interval'><span class='color-key' style='background-color:"+color_ramp[i]+"'></span><span class='text-key'>"+count_legend[i]+"</span></div>")
+}
+
+
 tippy('.day', {
   theme: 'custom',
-  animation:'fade',
+  animation: 'fade',
   animateFill: false,
   arrow: true
 })
-
 
 // console.log(normalize());
