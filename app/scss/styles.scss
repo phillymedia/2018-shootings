@@ -1,19 +1,26 @@
+@import 'longform-styles';
 @import 'philly-styles/values';
 @import 'map';
 @import 'calendar';
-
 $colors: #0d0887,#42039d,#6b00a8,#900da3,#b12a90,#cb4778,#e16461,#f3834c,#fca736,#fdce25,#f0f921;
 $numColors: length($colors);
 
-body {
-    font-family: $philly-sans;
-    margin: 0 auto;
+svg {
+    max-width: none;
+    max-height: none;
+}
+
+.darkbg {
     background: black;
 }
 
+.leaflet-container {
+    background: black !important;
+}
+
 .leaflet-container .leaflet-control-attribution {
-    background: transparent;
-    color: gray;
+    background: transparent !important;
+    color: gray !important;
 }
 
 .graphicWrapper {
@@ -84,11 +91,17 @@ body {
     text-align: right;
 }
 @include keyframes(grow) {
-    0% {opacity: 0.1;}
+    0% {
+        opacity: 0.1;
+    }
 
-    10% {opacity: 1;}
+    10% {
+        opacity: 1;
+    }
 
-    50% {fill: #f0f921;}
+    50% {
+        fill: #f0f921;
+    }
 
     100% {
         opacity: 0.85;
@@ -100,11 +113,17 @@ body {
     @include animation(grow 0.5s linear forwards);
 }
 @include keyframes(growFatal) {
-    0% {opacity: 0.1;}
+    0% {
+        opacity: 0.1;
+    }
 
-    10% {opacity: 1;}
+    10% {
+        opacity: 1;
+    }
 
-    50% {fill: #f0f921;}
+    50% {
+        fill: #f0f921;
+    }
 
     100% {
         opacity: 0.85;
@@ -121,6 +140,7 @@ body {
     fill: #7a2ab1 !important;
     opacity: 0.85;
 }
+
 .Fatalslider {
     fill: #f22822 !important;
 }
@@ -133,14 +153,13 @@ body {
     position: absolute;
     z-index: 100;
     right: 0;
-    padding: 10px;
-    padding-right: 20px;
+    padding: 10px 20px 10px 10px;
     bottom: 50px;
     text-align: right;
     color: gray;
     font-size: 14px;
     text-transform: uppercase;
-    background: black;
+    // background: black;
 }
 
 .datecontainer {
@@ -148,7 +167,6 @@ body {
     color: #ccc;
     font-family: $philly-sans;
     font-weight: 900;
-
 }
 
 .numCounter {
@@ -168,13 +186,13 @@ body {
     filter: drop-shadow(1px 2px #c1150f);
 }
 
-
 .lastupdated {
     font-size: 14px;
-    color:#999;
+    color: #999;
     font-family: $philly-sans;
     margin-top: 10px;
 }
+
 .slider {
     -webkit-appearance: none;
     margin-bottom: 30px;
@@ -185,8 +203,8 @@ body {
     background: rgba(#d3d3d3,0.6);
     outline: none;
     opacity: 1;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
+    -webkit-transition: 0.2s;
+    transition: opacity 0.2s;
 }
 
 .slider::-webkit-slider-thumb {
@@ -206,6 +224,7 @@ body {
     background: #f0f921;
     cursor: pointer;
 }
+
 .notvisible {
     display: none;
 }
@@ -221,5 +240,11 @@ body {
 .slidecontainer {
     position: relative;
     margin-bottom: 15px;
+}
 
+.overlayText .shootingnum {
+    color: #a960db;
+    font-family: $philly-sans;
+    font-weight: 900;
+    filter: drop-shadow(1px 2px #7a2ab1);
 }

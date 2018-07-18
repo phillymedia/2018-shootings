@@ -1,5 +1,5 @@
 var nunjucksRender = require('gulp-nunjucks-render');
-var removeCode = require('gulp-remove-code');
+var data = require("gulp-data");
 
 module.exports = function (gulp, plugins) {
     return function () {
@@ -7,8 +7,9 @@ module.exports = function (gulp, plugins) {
       .pipe(nunjucksRender({
            path: ['app/templates']
         }))
-        .pipe(removeCode({
-           tmp: true
+        .pipe(plugins.removeCode({
+           tmp: true,
+           build: true
         }))
       .pipe(gulp.dest('.tmp'))
       .pipe(plugins.browserSync.reload({

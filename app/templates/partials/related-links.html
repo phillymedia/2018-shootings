@@ -1,0 +1,9 @@
+<div class="containerInsertLeft linkBox" alignment="true">
+        <div class="linkHeader" alignment="true">
+            Related links
+        </div>
+        {% for item in links %}
+        <div class="linkItem" alignment="true">
+            <a href="{{item.url}}" target="_blank">{{item.linkname}}</a></div>
+        {% endfor %}
+</div>

@@ -1,59 +1,31 @@
-<!--removeIf(pymframe)-->
-<!DOCTYPE html>
-<html lang="en">
+<!--removeIf(production)-->
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>leaflet-svg-test</title>
-    <link rel="icon" type="image/png" href="//media.philly.com/designimages/favicon-32x32.png">
+{% include "shell/top.html" ignore missing %}
+<!--removeIf(dontpublish)-->
+<style>
+    .ai2htmlContainer p {
+        font-size: 18px;
+    }
+</style>
+<!--endRemoveIf(dontpublish)-->
+<!--endRemoveIf(production)-->
+<div>
+    {% include "partials/stylesheets.html" %}
+</div>
+{% include "main-body.html" ignore missing %}
+<!-- {% include "partials/recirc-box.html" %} -->
+<div>
+    <!--removeIf(production)-->
+    <script src="http://www.philly.com/includes/e32121b31e345f561b84372c2bf06282/jquery-2.0.0b2.js" type="text/javascript"></script>
+    <!--endRemoveIf(production)-->
+    {% include "partials/script-links.html" %}
+</div>
 
-  <!--removeIf(tmp)-->
-  <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/7722894/765348/css/fonts.css" />
-  <script type="text/javascript" src="http://media.philly.com/storage/inquirer/script/pym.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var pymChild = new pym.Child();
-      pym.Child({ polling: 100 });
-      pymChild.sendHeight();
-    //   var t = setTimeout(function() {
-    //     pymChild.sendHeight();
-    //     console.log("pym Started")
-    //   }, 2000);
-    }, false);
-  </script>
-  <!--endRemoveIf(tmp)-->
-</head>
-
-<body>
-  <!--endRemoveIf(pymframe)-->
-
-  {% include "partials/stylesheets.html" %}
-  <!--removeIf(tmp)-->
-
-  <style>
-    /* body,
-    html {
-      width: auto;
-      height: auto;
-      display: inline-block;
-    } */
-  </style>
-  <!--endRemoveIf(tmp)-->
+<!--removeIf(production)-->
+<!--build:js min-files/main.min.js -->
+<script src="js/main.js"></script>
+<!-- endbuild -->
 
 
-  <!--build:css styles.min.css-->
-  <link rel="stylesheet" href="css/styles.css">
-  <!--endbuild-->
-
-  {% include "main-body.html" ignore missing %} {% include "partials/script-links.html" %}
-
-  <!--build:js main.min.js -->
-  <script src="js/main.js"></script>
-  <!-- endbuild -->
-
-  <!--removeIf(pymframe)-->
-</body>
-
-</html>
-<!--endRemoveIf(pymframe)-->
+{% include "shell/bottom.html" ignore missing %}
+<!--endRemoveIf(production)-->

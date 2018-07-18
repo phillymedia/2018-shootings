@@ -1,0 +1,311 @@
+--links/references we use a lot:
+<link rel="stylesheet" href="http://media.philly.com/storage/inquirer/script/leaflet/leaflet-0.7.7-2017.css" />
+<script src="http://media.philly.com/storage/inquirer/script/leaflet/leaflet-0.7.7-2017.js"></script>
+<script src="https://use.fontawesome.com/8208ab3437.js"></script>
+
+
+
+
+--- HTML5 picture tag for media queries
+
+<div class="imagebreak">
+    <picture>
+        <source media="(max-width: 500px)" srcset="mobile_img_here.jpg">
+        <source media="(min-width: 500px)" srcset="desktop_img_here.jpg">
+        <img src="desktop_img_here.jpg" alt="photo" style="width:auto;">
+    </picture>
+
+    <div class="containerPhotoCredit" alignment="true">File photo</div>
+    <div class="containerPhotoCaption" alignment="true">A full width inline photo of Gavin.</div>
+</div>
+
+
+---headline section no top image
+
+<div alignment="true" class="headerIntroNoImage">
+    <div alignment="true" class="headerSectionNoImage">
+        <h1 alignment="true" class="overlayText">Headline here</h1>
+        <div alignment="true" class="headDisplay">
+            <div alignment="true" class="byline">
+                Jeff McLane / Staff Writer, <a href="mailto:jmclane@phillynews.com">jmclane@phillynews.com</a>
+                <div alignment="true" class="custom-social-share" alignment="true">&nbsp;</div>
+            </div>
+            <div alignment="true" class="dateline">Xxxx, Xxx XX, 2017</div>
+        </div>
+    </div>
+</div>
+
+
+-----
+< picture> tag for faster loading times
+
+    <picture>
+        <source media="(min-width: 650px)" srcset="imageLinkHere.jpg">
+        <source media="(min-width: 465px)" srcset="imageLinkHere.jpg">
+        <img src="imageLinkHere.jpg" alt="picture" style="width:auto;">
+    </picture>
+
+    --- related links box
+    <!-- Put the url in the url field and the text that will show as the linkname -->
+    {% set links = [{url:"", linkname:"link1"}, {url:"", linkname:"link2"},{url:"", linkname:"link3"}] %} {% include "partials/related-links.html" %} ----quote {% set quote = ["This is a quote here", "Source of quote"] %} {% include "partials/left-quote.html"
+    %} --- carousel code
+    <div alignment="true" class="container-fluid">
+        <div alignment="true" class="col-md-offset-0 col-md-12">
+            <div data-ride="carousel" class="carousel slide 411700165" id="carousel-one-generic" alignment="true">&zwnj;</div>
+        </div>
+    </div>
+
+    -- Ad
+
+    <div class="adUnitWrapper containerMedia containerInsertRight" alignment="true">
+        <div class="adUnit" alignment="true">
+            <div id="div-gpt-ad-mrec-21" alignment="true">
+                <script alignment="true" type="text/javascript">
+
+                        googletag.cmd.push(function() {
+                            googletag.display('div-gpt-ad-mrec-21');
+                        });
+                
+                </script>
+            </div>
+        </div>
+    </div>
+
+
+    -- Ad number 2
+
+    <div class="adUnitWrapper containerMedia containerInsertRight" alignment="true">
+        <div class="adUnit" alignment="true">
+            <div id="div-gpt-ad-mrec-22" alignment="true">
+                <script alignment="true" type="text/javascript">
+
+                        googletag.cmd.push(function() {
+                            googletag.display('div-gpt-ad-mrec-22');
+                        });
+
+                </script>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 16:9 aspect ratio -->
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="..."></iframe>
+    </div>
+
+    <!-- 4:3 aspect ratio -->
+    <div class="embed-responsive embed-responsive-4by3">
+        <iframe class="embed-responsive-item" src="..."></iframe>
+    </div>
+
+
+    <!--full page width-->
+    <div class="container-fluid">
+        <img src="" width="100%" />
+        <div class="containerPhotoCredit" alignment="true">File photo</div>
+        <div class="containerPhotoCaption" alignment="true">A full page width photo of Gavin.</div>
+    </div>
+    <!--end-->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 col col-md-offset-1">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc gravida, arcu sed dignissim vestibulum, risus sapien dignissim tortor, lobortis suscipit erat ante eget sapien. In gravida arcu a nulla dignissim, sit amet ullamcorper lorem
+                    consectetur. nec at nunc. Nunc placerat placerat rhoncus. Donec vel luctus sem. Vivamus in nunc tellus. Quisque euismod quam nisl, in cursus ipsum pharetra ut. In ac ullamcorper nisl, sed aliquam nunc. Sed posuere bibendum rhoncus.
+                    Morbi nec efficitur augue. Quisque gravida faucibus massa, sit amet convallis tortor eleifend nec.</p>
+
+
+                <!--full column width-->
+            </div>
+            <div class="col">
+                <img class="img-fluid" src="" alt="" width="100%/">
+                <div class="containerPhotoCredit" alignment="true">File photo</div>
+                <div class="containerPhotoCaption" alignment="true">A full column width photo of Gavin.</div>
+            </div>
+            <div class="col-md-7 col col-md-offset-1">
+                <!--end-->
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc gravida, arcu sed dignissim vestibulum, risus sapien dignissim tortor, lobortis suscipit erat ante eget sapien. In gravida arcu a nulla dignissim, sit amet ullamcorper lorem
+                    consectetur. nec at nunc. Nunc placerat placerat rhoncus. Donec vel luctus sem. Vivamus in nunc tellus. Quisque euismod quam nisl, in cursus ipsum pharetra ut. In ac ullamcorper nisl, sed aliquam nunc. Sed posuere bibendum rhoncus.
+                    Morbi nec efficitur augue. Quisque gravida faucibus massa, sit amet convallis tortor eleifend nec.</p>
+
+                <!--full page width ribbon-->
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4" style="padding:0 !important;">
+                <img src="" alt="" width="100%/">
+            </div>
+            <div class="col-md-4" style="padding:0 !important;">
+                <img src="" alt="" width="100%/">
+            </div>
+            <div class="col-md-4" style="padding:0 !important;">
+                <img src="" alt="" width="100%/">
+            </div>
+            <div class="containerPhotoCredit" alignment="true">File photo</div>
+            <div class="containerPhotoCaption" alignment="true">Three photos of Gavin in a full page width ribbon</div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 col col-md-offset-1">
+                <!--end-->
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc gravida, arcu sed dignissim vestibulum, risus sapien dignissim tortor, lobortis suscipit erat ante eget sapien. In gravida arcu a nulla dignissim, sit amet ullamcorper lorem
+                    consectetur. nec at nunc. Nunc placerat placerat rhoncus. Donec vel luctus sem. Vivamus in nunc tellus. Quisque euismod quam nisl, in cursus ipsum pharetra ut. In ac ullamcorper nisl, sed aliquam nunc. Sed posuere bibendum rhoncus.
+                    Morbi nec efficitur augue. Quisque gravida faucibus massa, sit amet convallis tortor eleifend nec.</p>
+
+
+                <!--two photos / column width-->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col">
+                <div class="row">
+                    <div class="col-md-6 col">
+                        <img src="" alt="" width="100%/">
+                    </div>
+                    <div class="col-md-6 col">
+                        <img src="" alt="" width="100%/">
+                    </div>
+                    <div class="containerPhotoCredit" alignment="true">File photo</div>
+                    <div class="containerPhotoCaption" alignment="true">Two photos of Gavin in a nested row that expands the width of the column.</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-7 col col-md-offset-1">
+                <!--end-->
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc gravida, arcu sed dignissim vestibulum, risus sapien dignissim tortor, lobortis suscipit erat ante eget sapien. In gravida arcu a nulla dignissim, sit amet ullamcorper lorem
+                    consectetur. nec at nunc. Nunc placerat placerat rhoncus. Donec vel luctus sem. Vivamus in nunc tellus. Quisque euismod quam nisl, in cursus ipsum pharetra ut. In ac ullamcorper nisl, sed aliquam nunc. Sed posuere bibendum rhoncus.
+                    Morbi nec efficitur augue. Quisque gravida faucibus massa, sit amet convallis tortor eleifend nec.</p>
+
+                <!--Two inline photos / width of text-->
+                <div class="row">
+                    <div class="col-md-6 col">
+                        <img src="" alt="" width="100%/">
+                    </div>
+                    <div class="col-md-6 col">
+                        <img src="" alt="" width="100%/">
+                    </div>
+                    <div class="containerPhotoCredit" alignment="true">File photo</div>
+                    <div class="containerPhotoCaption" alignment="true">Two inline photos of Gavin.</div>
+                </div>
+                <!--end-->
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc gravida, arcu sed dignissim vestibulum, risus sapien dignissim tortor, lobortis suscipit erat ante eget sapien. In gravida arcu a nulla dignissim, sit amet ullamcorper lorem
+                    consectetur. nec at nunc. Nunc placerat placerat rhoncus. Donec vel luctus sem. Vivamus in nunc tellus. Quisque euismod quam nisl, in cursus ipsum pharetra ut. In ac ullamcorper nisl, sed aliquam nunc. Sed posuere bibendum rhoncus.
+                    Morbi nec efficitur augue. Quisque gravida faucibus massa, sit amet convallis tortor eleifend nec.</p>
+
+                <!--full width inline-->
+                <div class="imagebreak">
+                    <img class="img-fluid" src="" alt="" width="100%/">
+                    <div class="containerPhotoCredit" alignment="true">File photo</div>
+                    <div class="containerPhotoCaption" alignment="true">A full width inline photo of Gavin.</div>
+                </div>
+                <!--end-->
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc gravida, arcu sed dignissim vestibulum, risus sapien dignissim tortor, lobortis suscipit erat ante eget sapien. In gravida arcu a nulla dignissim, sit amet ullamcorper lorem
+                    consectetur. nec at nunc. Nunc placerat placerat rhoncus. Donec vel luctus sem. Vivamus in nunc tellus. Quisque euismod quam nisl, in cursus ipsum pharetra ut. In ac ullamcorper nisl, sed aliquam nunc. Sed posuere bibendum rhoncus.
+                    Morbi nec efficitur augue. Quisque gravida faucibus massa, sit amet convallis tortor eleifend nec.</p>
+
+
+                <!--right inline / large-->
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 pull-right">
+                    <img class="img-fluid" src="" alt="" width="100%/">
+                    <div class="containerPhotoCredit" alignment="true">File photo</div>
+                    <div class="containerPhotoCaption" alignment="true">A large right inline photo of Gavin.</div>
+                </div>
+                <!--end-->
+
+
+                <!--right inline / FLOAT RIGHT large-->
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 pull-right largeRight"><img class="img-fluid" src="" alt="" width="100%/">
+                    <div class="containerPhotoCredit" alignment="true">Credit here</div>
+                    <div class="containerPhotoCaption" alignment="true">This is a caption.</div>
+                </div>
+                <!--end-->
+
+                <!--center inline / not full width/vertical photo -->
+                <div class="col-xs-12 col-sm-6 col-md-10 col-lg-10 centerFloat"><img class="img-fluid" src="" alt="" width="100%/">
+                    <div class="containerPhotoCredit" alignment="true">Credit here</div>
+                    <div class="containerPhotoCaption" alignment="true">This is a caption.</div>
+                </div>
+                <!--end-->
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc gravida, arcu sed dignissim vestibulum, risus sapien dignissim tortor, lobortis suscipit erat ante eget sapien. In gravida arcu a nulla dignissim, sit amet ullamcorper lorem
+                    consectetur. nec at nunc. Nunc placerat placerat rhoncus. Donec vel luctus sem. Vivamus in nunc tellus. Quisque euismod quam nisl, in cursus ipsum pharetra ut. In ac ullamcorper nisl, sed aliquam nunc. Sed posuere bibendum rhoncus.
+                    Morbi nec efficitur augue. Quisque gravida faucibus massa, sit amet convallis tortor eleifend nec.</p>
+
+
+                <!--right inline / medium-->
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 pull-right">
+                    <img class="img-fluid" src="" alt="" width="100%/">
+                    <div class="containerPhotoCredit" alignment="true">File photo</div>
+                    <div class="containerPhotoCaption" alignment="true">A medium right inline photo of Gavin.</div>
+                </div>
+                <!--end-->
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc gravida, arcu sed dignissim vestibulum, risus sapien dignissim tortor, lobortis suscipit erat ante eget sapien. In gravida arcu a nulla dignissim, sit amet ullamcorper lorem
+                    consectetur. nec at nunc. Nunc placerat placerat rhoncus. Donec vel luctus sem. Vivamus in nunc tellus. Quisque euismod quam nisl, in cursus ipsum pharetra ut. In ac ullamcorper nisl, sed aliquam nunc. Sed posuere bibendum rhoncus.
+                    Morbi nec efficitur augue. Quisque gravida faucibus massa, sit amet convallis tortor eleifend nec.</p>
+
+
+                <!--right inline / small-->
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 pull-right">
+                    <img class="img-fluid" src="" alt="" width="100%/">
+                    <div class="containerPhotoCredit" alignment="true">File photo</div>
+                    <div class="containerPhotoCaption" alignment="true">A small right inline photo of Gavin.</div>
+                </div>
+                <!--end-->
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc gravida, arcu sed dignissim vestibulum, risus sapien dignissim tortor, lobortis suscipit erat ante eget sapien. In gravida arcu a nulla dignissim, sit amet ullamcorper lorem
+                    consectetur. nec at nunc. Nunc placerat placerat rhoncus. Donec vel luctus sem. Vivamus in nunc tellus. Quisque euismod quam nisl, in cursus ipsum pharetra ut. In ac ullamcorper nisl, sed aliquam nunc. Sed posuere bibendum rhoncus.
+                    Morbi nec efficitur augue. Quisque gravida faucibus massa, sit amet convallis tortor eleifend nec.</p>
+
+
+                <!--left inline / large-->
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 push-left">
+                    <img class="img-fluid" src="" alt="" width="100%/">
+                    <div class="containerPhotoCredit" alignment="true">File photo</div>
+                    <div class="containerPhotoCaption" alignment="true">A large left inline photo of Gavin.</div>
+                </div>
+                <!--end-->
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc gravida, arcu sed dignissim vestibulum, risus sapien dignissim tortor, lobortis suscipit erat ante eget sapien. In gravida arcu a nulla dignissim, sit amet ullamcorper lorem
+                    consectetur. nec at nunc. Nunc placerat placerat rhoncus. Donec vel luctus sem. Vivamus in nunc tellus. Quisque euismod quam nisl, in cursus ipsum pharetra ut. In ac ullamcorper nisl, sed aliquam nunc. Sed posuere bibendum rhoncus.
+                    Morbi nec efficitur augue. Quisque gravida faucibus massa, sit amet convallis tortor eleifend nec.</p>
+
+
+                <!--left inline / medium-->
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 push-left">
+                    <img class="img-fluid" src="" alt="" width="100%/">
+                    <div class="containerPhotoCredit" alignment="true">File photo</div>
+                    <div class="containerPhotoCaption" alignment="true">A medium left inline photo of Gavin.</div>
+                </div>
+                <!--end-->
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc gravida, arcu sed dignissim vestibulum, risus sapien dignissim tortor, lobortis suscipit erat ante eget sapien. In gravida arcu a nulla dignissim, sit amet ullamcorper lorem
+                    consectetur. nec at nunc. Nunc placerat placerat rhoncus. Donec vel luctus sem. Vivamus in nunc tellus. Quisque euismod quam nisl, in cursus ipsum pharetra ut. In ac ullamcorper nisl, sed aliquam nunc. Sed posuere bibendum rhoncus.
+                    Morbi nec efficitur augue. Quisque gravida faucibus massa, sit amet convallis tortor eleifend nec.</p>
+
+
+                <!--left inline / small-->
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 push-left">
+                    <img class="img-fluid" src="" alt="" width="100%/">
+                    <div class="containerPhotoCredit" alignment="true">File photo</div>
+                    <div class="containerPhotoCaption" alignment="true">A small left inline photo of Gavin.</div>
+                </div>
+                <!--end-->
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc gravida, arcu sed dignissim vestibulum, risus sapien dignissim tortor, lobortis suscipit erat ante eget sapien. In gravida arcu a nulla dignissim, sit amet ullamcorper lorem
+                    consectetur. nec at nunc. Nunc placerat placerat rhoncus. Donec vel luctus sem. Vivamus in nunc tellus. Quisque euismod quam nisl, in cursus ipsum pharetra ut. In ac ullamcorper nisl, sed aliquam nunc. Sed posuere bibendum rhoncus.
+                    Morbi nec efficitur augue. Quisque gravida faucibus massa, sit amet convallis tortor eleifend nec.</p>
+
+            </div>
+        </div>
+    </div>

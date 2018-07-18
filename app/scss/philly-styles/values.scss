@@ -33,7 +33,7 @@ $philly-lightgray: #d9d9d9;
     }
 }
 @mixin tablet {
-     @media only screen and (max-width: 720px){
+     @media only screen and (max-width: 800px){
         @content;
     }
 }
@@ -151,8 +151,6 @@ $philly-lightgray: #d9d9d9;
         clear: both;
     }
 }
-
-
 %pagelink a {
    cursor: pointer;
     color: #0061A2;

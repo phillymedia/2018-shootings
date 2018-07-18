@@ -1,6 +1,4 @@
 require("./L.SvgScaleOverlay");
-require("./calendar.js");
-
 
 // var newdata = require("./2018-shootings.geo.json");
 var json1 = require("./disolved1.json");
@@ -9,20 +7,7 @@ var json3 = require("./disolved3.json");
 
 // var geojson = new L.geoJson(newdata);
 
-var months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December'
-]
+var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
 function getTheMonth(m) {
     return months[Number(m) - 1]
@@ -60,15 +45,20 @@ $(window).load(function() {
         console.log("data loaded");
         var newMapData = data.rows;
 
-        var byDate = newMapData.slice(0).filter(w => w.point_x);
+        var byDate = newMapData.slice(0);
         byDate.sort(function(a, b) {
-                return new Date(a.date_) - new Date(b.date_);
+            return new Date(a.date_) - new Date(b.date_);
         });
+
+        $(".shootingnum").html(byDate.length);
+
         let updated = (byDate.map(function(e) {
             return e.date_
         }).sort().reverse()[0]);
 
         $(".lastupdated").html(`Last updated: ${getTheMonth(updated.slice(5, 7))} ${Number(updated.slice(8, 10))}, 2018`)
+
+        $(".dateupdated").html(`${getTheMonth(updated.slice(5, 7))} ${Number(updated.slice(8, 10))}`)
 
         var circles;
 
@@ -94,39 +84,38 @@ $(window).load(function() {
                 d.parsedDate = Date.parse(d.date_);
 
                 var mulitplyer = (d.parsedDate - 1514782800000) / 1000000000;
-                if (d.point_x) {
-                    // setTimeout(function() {
+                // if (d.point_x) {
+                    setTimeout(function() {
 
-                    $(".datecontainer").html(getTheMonth(d.date_.slice(5, 7)) + " 2018")
-                    $(".numCounter").html(i+1)
+                        $(".datecontainer").html(getTheMonth(d.date_.slice(5, 7)) + " 2018")
+                        $(".numCounter").html(i + 1)
 
-                    dcounter = dcounter + d.fatal;
-                    var point = lmap.project(L.latLng(new L.LatLng(d.point_y, d.point_x)))._subtract(lmap.getPixelOrigin());
-                    elem.attr('cx', point.x)
-                    elem.attr('cy', point.y)
-                    elem.attr('r', radius * 2);
-                    elem.transition().duration(500).attr("r", radius);
-
-                    if (d.fatal > 0) {
-                        elem.classed('addedDotFatal', true)
-                    } else {
-                        elem.classed('addedDot', true)
-                    }
-                    var vatalcount = $(".addedDotFatal");
-                    $(".numCounterDeath").html(vatalcount.length)
+                        dcounter = dcounter + d.fatal;
+                        if(d.point_x) {
+                            var point = lmap.project(L.latLng(new L.LatLng(d.point_y, d.point_x)))._subtract(lmap.getPixelOrigin());
+                            elem.attr('cx', point.x)
+                            elem.attr('cy', point.y)
+                            elem.attr('r', radius * 2);
+                            elem.transition().duration(500).attr("r", radius);
+                        }
 
 
+                        if (d.fatal > 0) {
+                            elem.classed('addedDotFatal', true)
+                        } else {
+                            elem.classed('addedDot', true)
+                        }
+                        var vatalcount = $(".addedDotFatal");
+                        $(".numCounterDeath").html(vatalcount.length)
 
-                    slider.value = Date.parse(d.date_);
+                        slider.value = Date.parse(d.date_);
 
-                    // }, 1500 * mulitplyer)
+                    }, 1500 * mulitplyer)
 
-
-                }
+                // }
 
             })
         };
-
 
         svgOverlay.onScaleChange = function(scaleDiff) {
             if (scaleDiff > 0.5) {
@@ -141,17 +130,17 @@ $(window).load(function() {
 
         slider.oninput = function() {
             var getval = this.value;
-            var slidepct = (this.value - slider.min)/(slider.max - slider.min)*100;
+            var slidepct = (this.value - slider.min) / (slider.max - slider.min) * 100;
 
-            if(slidepct <= 50){
-                $(".sliderdate").css("left",(this.value - slider.min)/(slider.max - slider.min)*100 + "%").css('text-align','left')
+            if (slidepct <= 50) {
+                $(".sliderdate").css("left", (this.value - slider.min) / (slider.max - slider.min) * 100 + "%").css('text-align', 'left')
             } else {
-                $(".sliderdate").css("left",(this.value - slider.min)/(slider.max - slider.min)*85 + "%").css('text-align','right')
+                $(".sliderdate").css("left", (this.value - slider.min) / (slider.max - slider.min) * 80 + "%").css('text-align', 'right')
             }
 
             var newdate;
 
-            circles.each(function(d,i) {
+            circles.each(function(d, i) {
                 d3.select(this).classed('slideback', false)
                 d3.select(this).classed('Fatalslider', false)
 
@@ -160,7 +149,9 @@ $(window).load(function() {
 
                 } else {
 
-                    if(!newdate || d.date_ > newdate) {newdate = d.date_}
+                    if (!newdate || d.date_ > newdate) {
+                        newdate = d.date_
+                    }
 
                     d3.select(this).classed('notvisible', false)
                     d3.select(this).classed('slideback', true)
@@ -169,12 +160,11 @@ $(window).load(function() {
                         d3.select(this).classed('slideback Fatalslider', true)
                     }
 
-
-                    if(Math.abs(Date.parse(d.date_) - slider.value) < 60000000){
+                    if (Math.abs(Date.parse(d.date_) - slider.value) < 60000000) {
                         // d3.select(this).classed('selectedslider', true)
                         // d3.select(this).style("fill-opacity", 0.6);
                         d3.select(this).style("stroke", '#f0f921');
-                        d3.select(this).attr('r', radius*2);
+                        d3.select(this).attr('r', radius * 2);
                         d3.select(this).style("stroke-width", '4');
 
                     } else {
@@ -188,15 +178,150 @@ $(window).load(function() {
 
             })
 
-
-
             $(".numCounterDeath").html($(".Fatalslider").length)
 
             var slidecircles = $(".slideback");
             $(".numCounter").html(slidecircles.length)
             $(".datecontainer").html(getTheMonth(newdate.slice(5, 7)) + " 2018")
-            $(".sliderdate").html(`${getTheMonth(newdate.slice(5, 7))} ${Number(newdate.slice(8, 10))}` )
+            $(".sliderdate").html(`${getTheMonth(newdate.slice(5, 7))} ${Number(newdate.slice(8, 10))}`)
         }
+
+        const tippy = require('tippy.js')
+        var now = new Date(updated);
+        // var calendar_data = require("./2018-shootings.geo.json");
+        var calendar_data = byDate;
+        var count_range = [];
+        var month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+        var weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+        Date.prototype.toISODate = function() {
+          return this.getFullYear() + '-' +
+            ('0' + (this.getMonth() + 1)).slice(-2) + '-' +
+            ('0' + this.getDate()).slice(-2);
+        }
+
+        var month_index = -1;
+        for (var d = new Date(2018, 0, 1); d <= now; d.setDate(d.getDate() + 1)) {
+          var iso = d.toISODate();
+          var month_cur;
+          if (d.getMonth() !== month_index) {
+            $("#calendar").append("<div class='month' id='" + month[d.getMonth()] + "'><div class='title'>" + month[d.getMonth()] + "</div><div class='month-inner'></div></div>")
+            month_cur = "#" + month[d.getMonth()];
+          }
+          if (d.getMonth() == month_index) {
+            $(month_cur).find(".month-inner").append("<div class='day' data-longdate='" + d.toDateString() + "' data-day='" + d.getDay() + "' data-date='" + iso + "'><div class='day-inner' data-count='0'></div></div>")
+          }
+          var month_index = d.getMonth()
+        }
+
+        $(".month-inner").each(function() {
+          var weekday = $(this).find(".day").first();
+          var weedkday_eq = $(weekday).data("day");
+          var weekday_w = $(weekday).width();
+          $(weekday).css("margin-left", (weedkday_eq * (100 / 7) + "%"));
+        })
+
+        // console.log(calendar_data.features.length)
+
+        // $.each(calendar_data.features, function (key, val) {
+        //     $.each(val.properties, function(i,j){
+        //       console.log("test")
+        //         // items.push('<li id="' + i + '">' + j + '</li>');
+        //     })
+        // });
+
+        for (var j = 0; j < calendar_data.length; j++) {
+          $(".day").each(function() {
+            if ($(this).data("date") == calendar_data[j].date_.split('T')[0]) {
+              var count = Number($(this).find(".day-inner").attr("data-count"));
+              $(this).find(".day-inner").attr("data-count", (count + 1));
+            }
+
+          });
+        }
+
+        function normalize(val) {
+          return (val - 0) / (Math.max.apply(null, count_range) - 0);
+        }
+
+        // $(".day").each(function() {
+        //   var count_day = $(this).find(".day-inner").attr("data-count");
+        //   count_range.push(Number(count_day));
+        // });
+        // console.log(Math.max.apply(null, count_range));
+
+        var color_ramp = ['#f0f921', '#ccd237', '#a9ab41', '#888845', '#666546', '#444444']
+
+        $(".day").each(function() {
+          var count_day = $(this).find(".day-inner").attr("data-count");
+          count_range.push(Number(count_day));
+
+        });
+
+        $(".day").each(function() {
+          var count_day = $(this).find(".day-inner").attr("data-count");
+
+          if (normalize(count_day) >= 0.9) {
+            $(this).find(".day-inner").css("background-color", color_ramp[0])
+          }
+
+          if (normalize(count_day) < 0.9 && normalize(count_day) >= 0.7) {
+            $(this).find(".day-inner").css("background-color", color_ramp[1])
+          }
+
+          if (normalize(count_day) < 0.7 && normalize(count_day) >= 0.5) {
+            $(this).find(".day-inner").css("background-color", color_ramp[2])
+          }
+
+          if (normalize(count_day) < 0.5 && normalize(count_day) >= 0.3) {
+            $(this).find(".day-inner").css("background-color", color_ramp[3])
+          }
+
+          if (normalize(count_day) < 0.3 && normalize(count_day) >= 0.1) {
+            $(this).find(".day-inner").css("background-color", color_ramp[4])
+          }
+
+          if (normalize(count_day) < 0.1) {
+            $(this).find(".day-inner").css("background-color", color_ramp[5])
+          }
+
+          $(this).attr("title", "<h3>" + $(this).data("longdate") + "</h3><div class='sub'>Number of shootings: " + count_day + "</div>");
+
+        });
+
+        function onlyUnique(value, index, self) {
+            return self.indexOf(value) === index;
+        }
+
+        function sortNumber(a,b) {
+            return a - b;
+        }
+
+        var unique_count = count_range.filter( onlyUnique );
+        unique_count.sort(sortNumber);
+        var count_interval = Math.ceil(unique_count.length/6)
+        var count_legend = [];
+        for (var i = 0; i < unique_count.length && count_legend.length < 6; i += count_interval) count_legend.push(unique_count[i]);
+        console.log(count_legend)
+
+
+        $("#calendar").before("<div id='calendar-legend'><span>Number of shootings per day</span><div id='calendar-legend-inner'></div></div>");
+        var i;
+        for (i = 0; i < count_legend.length; i++) {
+            $("#calendar-legend-inner").prepend("<div class='legend-interval'><span class='color-key' style='background-color:"+color_ramp[i]+"'></span><span class='text-key'>"+count_legend[i]+"</span></div>")
+        }
+
+
+        tippy('.day', {
+          theme: 'custom',
+          animation: 'fade',
+          animateFill: false,
+          arrow: true
+        })
+
+        // console.log(normalize());
+
 
     })
 });

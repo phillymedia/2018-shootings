@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="pl fonts-loaded">
+    <!--<![endif]-->
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+        <title>wethomes</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="twitter:card" content="summary_large_image">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" type="text/css" href="//www.philly.com/includes/6f121f7c3bb385d8b7db1de92b6aa58e/style-hc.css"/>
+        <link rel="stylesheet" type="text/css" href="//www.philly.com/includes/41fc8c32a132cb6b9aa32e2cd8736ed2/long-form-styles.css"/>
+        <link rel="icon" type="image/png" href="//media.philly.com/designimages/favicon-32x32.png">
+        <link rel="apple-touch-icon" href="//media.philly.com/designimages/touch-icon-iphone.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="//media.philly.com/designimages/touch-icon-ipad.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="//media.philly.com/designimages/touch-icon-iphone-retina.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="//media.philly.com/designimages/touch-icon-ipad-retina.png">
+
+        <script src="//www.philly.com/includes/e32121b31e345f561b84372c2bf06282/jquery-2.0.0b2.js" type="text/javascript"></script>
+
+        <!-- END Krux ControlTag -->
+
+        <link rel="stylesheet" href="css/phillystyles.css">
+
+        <!--build:css min-files/styles.min.css-->
+        <link rel="stylesheet" href="css/styles.css">
+        <!--endbuild-->
+
+    </head>
+    <body>
+
+        <div class="content is-subscriber" role="document">
+            <header class="header smaller-height header-border" role="banner" id="header">
+                <div class="branch-journeys-top"></div>
+                <progress class="progress" value="0"></progress>
+                <div class="header--primary">
+                    <div class="lc">
+                        <div class="header--inner wrap cf page--pad rel">
+                            <div class="papers-logo">
+                                <div class="brandlockup-logo">
+                                    <a href="http://www.philly.com" class="rel z-100" data-link-type="header-nav-global">
+                                        <img class="va--middle" src="http://media.philly.com/binary/philly-logo-2018.svg">
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- /.papers-log -->
+                            <div class="header__icons ">
+
+                                <div id="profilelinks" class="header__icon va--middle">
+
+                                    <div class="timestamp font--s-m">
+                                        <span class="date front--s-m gray--dark">Wednesday, June 13, 2018</span>
+                                        |
+                                        <a class="gray--dark" data-link-type="header-nav-global" href="https://myaccount.philly.com/access.aspx?product=eEdition_inq">
+                                            <span class="paper font--s-m fw--700">Today's Paper</span></a>
+                                    </div>
+
+                                    <a class="subscriber--btn font--s-m bg--dark-gray hide" data-link-type="header-nav-global" href="https://checkout.philly.com/subscribe">
+                                        <span id="subscriberText">Subscribe</span>
+                                    </a>
+
+                                    <a class="signinlink hide" data-link-type="header-nav-global">
+                                        <!-- Loading Spinner -->
+                                        <img class="loader" id="loginLoader" src="https://media.philly.com/designimages/loader-branded.gif" alt="Loading..." title="">
+                                        <span id="loginText"></span>
+                                    </a>
+                                    <!-- /.signinlink -->
+
+                                    <a class="profilelink account-toggler js-toggle" data-toggled="content" data-prefix="logged-in-menu" data-menu-content="account" data-link-type="header-nav-global">
+                                        <!-- Loading Spinner -->
+                                        <img class="loader hide" id="profileLoader" src="https://media.philly.com/designimages/loader-branded.gif" alt="Loading..." title="">
+                                        <span id="profileText">My Account</span>
+                                        <span id="loginArrow" class="signinarrow">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewbox="0 0 350 350">
+                                                <path d="M0 63.75l127.5 127.5L255 63.75z"></path>
+                                            </svg>
+                                        </span>
+                                    </a>
+                                    <!-- /.profilelink -->
+
+                                    <!-- Navigation Menu Dropdown -->
+                                    <div class="section-dropdown__inner bg--dark-gray">
+
+                                        <div class="section-dropdown-account__wrap">
+                                            <div class="section-dropdown-account bg--dark-gray">
+                                                <div class="section-dropdown-account__inner">
+
+                                                    <!-- Dropdown Menu Items -->
+                                                    <ul class="snp__sub-list">
+                                                        <li class="snp__sub-list-item nonsubscriber" id="subscribeLink">
+                                                            <a href="https://checkout.philly.com/subscribe">
+                                                                Subscribe
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="snp__sub-list-item nonsubscriber" id="activatePrint">
+                                                            <a href="https://myaccount.philly.com/dssMatch.aspx">
+                                                                Activate Print Subscription
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="snp__sub-list-item subscriber">
+                                                            <a href="https://myaccount.philly.com">
+                                                                Manage My Account
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="snp__sub-list-item">
+                                                            <a href="http://www.philly.com/philly/profiles/profile/">
+                                                                My Profile
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="snp__sub-list-item">
+                                                            <a href="https://myaccount.philly.com/FAQ.aspx">
+                                                                FAQ
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="snp__sub-list-item">
+                                                            <a class="signoutlink">Log Out</a>
+                                                        </li>
+                                                    </ul>
+                                                    <!-- END: Dropdown Menu Items -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- END: Dropdown -->
+
+                                    <a href="#open-menu" class="header__icon menu-toggler js-toggle" data-toggled="content" data-prefix="menu" data-link-type="header-nav-main">
+                                        <div class="menu-toggler--wrap rel">
+                                            <div class="menu-toggler__spans rel">
+                                                <span></span>
+                                                <span></span>
+                                                <span></span>
+                                                <span></span></div>
+                                        </div>
+                                        <!-- /.menu-toggler--wrap -->
+                                    </a>
+                                    <!-- /.menu-toggler -->
+
+                                </div>
+                                <!-- /.profilelinks -->
+                            </div>
+                            <!-- /.header__icons -->
+                        </div>
+                        <!-- /.header--inner -->
+                    </div>
+                    <!-- /.lc -->
+                </div>
+                <!-- /.header--primary -->
+
+                <div class="rel primary-nav__wrap">
+                    <div class="lc">
+                        <nav class="primary-nav" id="primary-nav" role="navigation">
+
+                            <div class="primary-nav--full rel">
+                                <div class="primary-nav--list">
+                                    <ul class="scroll js-hover-scroll">
+                                        <li class="pn__list-item">
+                                            <a href="http://www.philly.com/philly/news/" class="bl" data-link-type="header-nav-main">
+                                                <b>News</b>
+                                            </a>
+                                        </li>
+                                        <li class="pn__list-item">
+                                            <a href="http://www.philly.com/philly/sports/" class="bl" data-link-type="header-nav-main">
+                                                <b>Sports</b>
+                                            </a>
+                                        </li>
+                                        <li class="pn__list-item">
+                                            <a href="http://www.philly.com/philly/business/" class="bl" data-link-type="header-nav-main">
+                                                <b>Business</b>
+                                            </a>
+                                        </li>
+                                        <li class="pn__list-item">
+                                            <a href="http://www.philly.com/philly/opinion/" class="bl" data-link-type="header-nav-main">
+                                                <b>Opinion</b>
+                                            </a>
+                                        </li>
+                                        <li class="pn__list-item">
+                                            <a href="http://www.philly.com/philly/news/politics/" class="bl" data-link-type="header-nav-main">
+                                                <b>Politics</b>
+                                            </a>
+                                        </li>
+                                        <li class="pn__list-item">
+                                            <a href="http://www.philly.com/philly/entertainment/" class="bl" data-link-type="header-nav-main">
+                                                <b>Entertainment</b>
+                                            </a>
+                                        </li>
+                                        <li class="pn__list-item">
+                                            <a href="http://www.philly.com/philly/living/" class="bl" data-link-type="header-nav-main">
+                                                <b>Life</b>
+                                            </a>
+                                        </li>
+                                        <li class="pn__list-item">
+                                            <a href="http://www.philly.com/philly/food/" class="bl" data-link-type="header-nav-main">
+                                                <b>Food</b>
+                                            </a>
+                                        </li>
+                                        <li class="pn__list-item">
+                                            <a href="http://www.philly.com/philly/health/" class="bl" data-link-type="header-nav-main">
+                                                <b>Health</b>
+                                            </a>
+                                        </li>
+                                        <li class="pn__list-item">
+                                            <a href="http://www.philly.com/philly/business/real_estate/" class="bl" data-link-type="header-nav-main">
+                                                <b>Real Estate</b>
+                                            </a>
+                                        </li>
+                                        <li class="pn__list-item">
+                                            <a href="http://www.philly.com/philly/obituaries/" class="bl" data-link-type="header-nav-main">
+                                                <b>Obits</b>
+                                            </a>
+                                        </li>
+                                        <li class="pn__list-item">
+                                            <a href="http://www.philly.com/philly/business/jobs/" class="bl" data-link-type="header-nav-main">
+                                                <b>Jobs</b>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- /.primary-nav--list -->
+                                <div class="primary-nav--menu">
+
+                                    <div class="search-toggler-bar">
+                                        <a href="#search" class="header__icon search-toggler" data-prefix="menu" data-menu-content="search" data-link-type="header-nav-main">
+                                            <span class="icon icon--ys icon__magnifying-glass va--middle">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewbox="-145 57 500 500" enable-background="new -145 57 500 500">
+                                                    <title>Search icon</title>
+                                                    <path
+                                                        d="M160.8 57c-105.7.3-192.3 86.2-193.3 191.9-.4 42.4 12.9 81.7 35.7 113.9l-138.7 138.6c-12.7 12.7-12.7 33.3 0 46.1 12.7 12.7 33.3 12.7 46.1 0L49.3 408.8c31.6 22.5 70.3 35.7 112 35.7 106.8 0 193.7-86.9 193.7-193.7 0-107-87.2-194.1-194.2-193.8zm.5 322.3c-70.9 0-128.6-57.7-128.6-128.6s57.7-128.6 128.6-128.6 128.6 57.7 128.6 128.6c0 71-57.7 128.6-128.6 128.6z"></path>
+                                                </svg>
+                                            </span>
+                                        </a>
+
+                                        <form class="inline-form search-form navbar-search-form" action="http://www.philly.com/philly/search" method="get" name="gs" target="_top" id="search_form">
+                                            <fieldset>
+                                                <div class="inline-container rel ovh">
+                                                    <input type="hidden" name="search" value="y">
+                                                    <input type="hidden" name="adv" value="y">
+                                                    <input type="hidden" name="queryType" value="all">
+                                                    <input type="hidden" name="fields" value="full">
+                                                    <input type="hidden" name="sites" value="philly">
+                                                    <input type="search" placeholder="Search" class="search-form__input font--ml bg--light-gray-3" name="searchKeywords" value="">
+                                                    <!-- /.search-form__submit -->
+                                                </div>
+                                                <!-- /.inline-container -->
+                                            </fieldset>
+                                        </form>
+                                        <!-- /.search-form -->
+                                    </div>
+                                    <!-- /.search-toggler-bar -->
+                                    <!-- /.search-toggler -->
+
+                                    <a href="#open-menu" class="header__icon menu-toggler js-toggle" data-toggled="content" data-prefix="menu" data-link-type="header-nav-main">
+                                        <div class="menu-toggler--wrap rel">
+                                            <div class="menu-toggler__spans rel">
+                                                <span></span>
+                                                <span></span>
+                                                <span></span>
+                                                <span></span></div>
+                                        </div>
+                                        <!-- /.menu-toggler--wrap -->
+                                    </a>
+                                    <!-- /.menu-toggler -->
+                                </div>
+
+                            </div>
+                            <!-- /.primary-nav--full -->
+                        </nav>
+                        <!-- /.primary-nav -->
+                    </div>
+                </div>
+                <!-- /.primary-nav__wrap -->
+
+                <!-- Section Menu Dropdown -->
+                <section class="section-dropdown invert-links white">
+                    <div class="lc">
+                        <div class="rel">
+
+                            <!-- Dropdown Wrap -->
+                            <div class="section-dropdown__wrap">
+                                <div class="section-nav__wrap secondary-nav--btm bg--slate-dark cf">
+                                    <!-- Template: Search Form -->
+                                    <div class="section-dropdown__search">
+                                        <form class="inline-form search-form" action="http://www.philly.com/philly/search" method="get" name="gs" onsubmit="return searchFormSubmit2(this)" target="_top" id="search_form">
+                                            <fieldset>
+                                                <legend class="is-vishidden">Search</legend>
+                                                <label for="search-field" class="is-vishidden">Search</label>
+                                                <div class="inline-container rel ovh">
+                                                    <input type="hidden" name="search" value="y">
+                                                    <input type="hidden" name="adv" value="y">
+                                                    <input type="hidden" name="queryType" value="all">
+                                                    <input type="hidden" name="fields" value="full">
+                                                    <input type="hidden" name="sites" value="philly">
+
+                                                    <input type="search" placeholder="Search" class="search-form__input font--ml bg--lighter-gray" name="searchKeywords">
+
+                                                    <button class="search-form__submit br--none abs">
+                                                        <span class="is-vishidden">Search</span>
+                                                        <span class="icon icon--s icon__magnifying-glass va--middle">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" viewbox="-145 57 500 500" enable-background="new -145 57 500 500">
+                                                                <title>Search icon</title>
+                                                                <path
+                                                                    d="M160.8 57c-105.7.3-192.3 86.2-193.3 191.9-.4 42.4 12.9 81.7 35.7 113.9l-138.7 138.6c-12.7 12.7-12.7 33.3 0 46.1 12.7 12.7 33.3 12.7 46.1 0L49.3 408.8c31.6 22.5 70.3 35.7 112 35.7 106.8 0 193.7-86.9 193.7-193.7 0-107-87.2-194.1-194.2-193.8zm.5 322.3c-70.9 0-128.6-57.7-128.6-128.6s57.7-128.6 128.6-128.6 128.6 57.7 128.6 128.6c0 71-57.7 128.6-128.6 128.6z"></path>
+                                                            </svg>
+                                                        </span>
+                                                    </button>
+                                                    <!-- /.search-form__submit -->
+                                                </div>
+                                                <!-- /.inline-container -->
+                                            </fieldset>
+                                        </form>
+                                        <!-- /.search-form -->
+
+                                    </div>
+                                    <!-- /.section-dropdown__search -->
+
+                                    <div class="section-nav__inner_wrap">
+                                        <nav class="section-nav section-nav-pad" id="section-nav" role="navigation">
+                                            <div class="section-nav__primary rel">
+                                                <ul class="snp__list cf">
+                                                    <li class="snp__list-item">
+                                                        <div class="snp__sub-list font--m">
+                                                            <h2 class="">
+                                                                <a href="http://www.philly.com/philly/news/" data-link-type="mega-nav" class="snp__main-link db">News</a>
+                                                            </h2>
+                                                            <ul class="snp__sub-list font--m">
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/news/breaking/" class="bl" data-link-type="mega-nav">Latest</a>
+                                                                </li>
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/news/pennsylvania/" class="bl" data-link-type="mega-nav">Pennsylvania</a>
+                                                                </li>
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/news/new_jersey/" class="bl" data-link-type="mega-nav">New Jersey</a>
+                                                                </li>
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/news/politics/" class="bl" data-link-type="mega-nav">Politics</a>
+                                                                </li>
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/education/" class="bl" data-link-type="mega-nav">Education</a>
+                                                                </li>
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/news/special_packages/" class="bl" data-link-type="mega-nav">Special Reports</a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                    <!-- /.snp__list-item -->
+                                                    <li class="snp__list-item">
+                                                        <div class="snp__sub-list font--m">
+                                                            <h2 class="">
+                                                                <a href="http://www.philly.com/philly/sports/" data-link-type="mega-nav" class="snp__main-link db">Sports</a>
+                                                            </h2>
+                                                            <ul class="snp__sub-list font--m">
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/sports/eagles/" class="bl" data-link-type="mega-nav">Eagles</a>
+                                                                </li>
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/sports/phillies/" class="bl" data-link-type="mega-nav">Phillies</a>
+                                                                </li>
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/sports/flyers/" class="bl" data-link-type="mega-nav">Flyers</a>
+                                                                </li>
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/sports/sixers/" class="bl" data-link-type="mega-nav">Sixers</a>
+                                                                </li>
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/sports/soccer/" class="bl" data-link-type="mega-nav">Union</a>
+                                                                </li>
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/sports/colleges/" class="bl" data-link-type="mega-nav">College</a>
+                                                                </li>
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/sports/high_school/" class="bl" data-link-type="mega-nav">High School</a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                    <!-- /.snp__list-item -->
+                                                    <li class="snp__list-item">
+                                                        <div class="snp__sub-list font--m">
+                                                            <h2 class="">
+                                                                <a href="http://www.philly.com/philly/entertainment/" data-link-type="mega-nav" class="snp__main-link db">Entertainment</a>
+                                                            </h2>
+                                                            <ul class="snp__sub-list font--m">
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/entertainment/celebrities/" class="bl" data-link-type="mega-nav">Celebs &amp; Gossip</a>
+                                                                </li>
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/blogs/things_to_do/" class="bl" data-link-type="mega-nav">Things to Do</a>
+                                                                </li>
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/entertainment/television/" class="bl" data-link-type="mega-nav">TV</a>
+                                                                </li>
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/entertainment/movies/" class="bl" data-link-type="mega-nav">Movies</a>
+                                                                </li>
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/entertainment/arts/" class="bl" data-link-type="mega-nav">Arts</a>
+                                                                </li>
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/puzzles/" class="bl" data-link-type="mega-nav">Puzzles</a>
+                                                                </li>
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/comics_games/179494401.html" class="bl" data-link-type="mega-nav">Comics</a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                    <!-- /.snp__list-item -->
+                                                    <li class="snp__list-item">
+                                                        <div class="snp__sub-list font--m">
+                                                            <h2 class="">
+                                                                <a href="http://www.philly.com/philly/business/" data-link-type="mega-nav" class="snp__main-link db">Business</a>
+                                                            </h2>
+                                                            <ul class="snp__sub-list font--m">
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/business/cars/" class="bl" data-link-type="mega-nav">Cars</a>
+                                                                </li>
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/business/jobs/" class="bl" data-link-type="mega-nav">Jobs</a>
+                                                                </li>
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/business/pharma/" class="bl" data-link-type="mega-nav">Health Biz</a>
+                                                                </li>
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/blogs/inq-phillydeals/" class="bl" data-link-type="mega-nav">Philly Deals</a>
+                                                                </li>
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/business/real_estate/" class="bl" data-link-type="mega-nav">Real Estate</a>
+                                                                </li>
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/business/small_business/" class="bl" data-link-type="mega-nav">Small Business</a>
+                                                                </li>
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/business/personal_finance/" class="bl" data-link-type="mega-nav">Investing</a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                    <!-- /.snp__list-item -->
+                                                    <li class="snp__list-item">
+                                                        <div class="snp__sub-list font--m">
+                                                            <h2 class="">
+                                                                <a href="http://www.philly.com/philly/health/" data-link-type="mega-nav" class="snp__main-link db">Health</a>
+                                                            </h2>
+                                                            <ul class="snp__sub-list font--m">
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/health/kidshealth/" class="bl" data-link-type="mega-nav">Kids' Health</a>
+                                                                </li>
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/blogs/on-the-run/" class="bl" data-link-type="mega-nav">Running</a>
+                                                                </li>
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/blogs/goal-getter-nutrition/" class="bl" data-link-type="mega-nav">Nutrition</a>
+                                                                </li>
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/health/sportsmedicine/" class="bl" data-link-type="mega-nav">Sports Medicine</a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                    <!-- /.snp__list-item -->
+                                                    <li class="snp__list-item">
+                                                        <div class="snp__sub-list font--m">
+                                                            <h2 class="">
+                                                                <a href="http://www.philly.com/philly/food/" data-link-type="mega-nav" class="snp__main-link db">Food</a>
+                                                            </h2>
+                                                            <ul class="snp__sub-list font--m">
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/health/special_reports/clean-plates/" class="bl" data-link-type="mega-nav">Clean Plates</a>
+                                                                </li>
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/columnists/craig_laban/" class="bl" data-link-type="mega-nav">Craig LaBan</a>
+                                                                </li>
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/blogs/the-insider/" class="bl" data-link-type="mega-nav">The Insider</a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                    <!-- /.snp__list-item -->
+                                                    <li class="snp__list-item">
+                                                        <div class="snp__sub-list font--m">
+                                                            <h2 class="">
+                                                                <a href="http://www.philly.com/philly/opinion/" data-link-type="mega-nav" class="snp__main-link db">Opinion</a>
+                                                            </h2>
+                                                            <ul class="snp__sub-list font--m">
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/blogs/" class="bl" data-link-type="mega-nav">Blogs</a>
+                                                                </li>
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/columnists/" class="bl" data-link-type="mega-nav">Columnists</a>
+                                                                </li>
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/opinion/letters/" class="bl" data-link-type="mega-nav">Letters</a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                    <!-- /.snp__list-item -->
+                                                    <li class="snp__list-item">
+                                                        <div class="snp__sub-list font--m">
+                                                            <h2 class="">
+                                                                <a href="http://www.philly.com/philly/living/" data-link-type="mega-nav" class="snp__main-link db">Lifestyle</a>
+                                                            </h2>
+                                                            <ul class="snp__sub-list font--m">
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/home/" class="bl" data-link-type="mega-nav">Home &amp; Design</a>
+                                                                </li>
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/living/sex_love_dating/" class="bl" data-link-type="mega-nav">Sex &amp; Dating</a>
+                                                                </li>
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/living/style/" class="bl" data-link-type="mega-nav">Style</a>
+                                                                </li>
+                                                                <li class="snp__sub-list-item">
+                                                                    <a href="http://www.philly.com/philly/living/travel/" class="bl" data-link-type="mega-nav">Travel</a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                    <!-- /.snp__list-item -->
+                                                </ul>
+                                                <!-- /.snp__list -->
+                                            </div>
+                                            <!-- /.section-nav__primary -->
+                                        </nav>
+                                        <!-- /.section-nav -->
+
+                                        <nav class="secondary-nav bg--black cf">
+                                            <div class="secondary-nav__group">
+                                                <div class="secondary-nav__link-list font--ml">
+                                                    <h2 class="heading__secondary heading__secondary--s space--btm">Marketplace
+                                                        <em></em>
+                                                    </h2>
+                                                    <ul class="secondary-nav__link-list font--ml">
+                                                        <li class="">
+                                                            <a href="http://marketplace.philly.com/pa/real-estate-for-sale/search" class="bl" data-link-type="mega-nav">Find a Home</a>
+                                                        </li>
+                                                        <li class="">
+                                                            <a href="https://jobs.local-jobs.monster.com/search?wt.mc_n=hjnpsearch&amp;ch=PINQ&amp;where=Philadelphia%2C%20PA&amp;rad=50" class="bl" data-link-type="mega-nav">Job Listings</a>
+                                                        </li>
+                                                        <li class="">
+                                                            <a href="http://shopping.philly.com" class="bl" data-link-type="mega-nav">Print Offers Online</a>
+                                                        </li>
+                                                        <li class="">
+                                                            <a href="http://specialsections.philly.com/philly-inquirer/special-sections " class="bl" data-link-type="mega-nav">Special Sections</a>
+                                                        </li>
+                                                        <li class="">
+                                                            <a href="http://marketplace.philly.com/" class="bl" data-link-type="mega-nav">All Classifieds</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <!-- /.secondary-nav__group -->
+                                            <div class="secondary-nav__group">
+                                                <div class="secondary-nav__link-list font--ml">
+                                                    <h2 class="heading__secondary heading__secondary--s space--btm">People
+                                                        <em></em>
+                                                    </h2>
+                                                    <ul class="secondary-nav__link-list font--ml">
+                                                        <li class="">
+                                                            <a href="http://www.legacy.com/celebration/philly/celebrations-search.aspx?daterange=99999&amp;announcementtype=16" class="bl" data-link-type="mega-nav">Births</a>
+                                                        </li>
+                                                        <li class="">
+                                                            <a href="http://www.legacy.com/celebration/philly/" class="bl" data-link-type="mega-nav">Celebrations</a>
+                                                        </li>
+                                                        <li class="">
+                                                            <a href="http://www.legacy.com/celebration/philly/celebrations-search.aspx?daterange=99999&amp;announcementtype=2" class="bl" data-link-type="mega-nav">Engagements</a>
+                                                        </li>
+                                                        <li class="">
+                                                            <a href="http://www.philly.com/philly/obituaries/" class="bl" data-link-type="mega-nav">Obituaries</a>
+                                                        </li>
+                                                        <li class="">
+                                                            <a href="http://m.legacy.com/obituaries/philly" class="bl" data-link-type="mega-nav">Death Notices</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <!-- /.secondary-nav__group -->
+                                            <div class="secondary-nav__group">
+                                                <div class="secondary-nav__link-list font--ml">
+                                                    <h2 class="heading__secondary heading__secondary--s space--btm">Your Day
+                                                        <em></em>
+                                                    </h2>
+                                                    <ul class="secondary-nav__link-list font--ml">
+                                                        <li class="">
+                                                            <a href="http://www.philly.com/philly/calendar/" class="bl" data-link-type="mega-nav">Event Calendar</a>
+                                                        </li>
+                                                        <li class="">
+                                                            <a href="http://www.philly.com/philly/calendar/" class="bl" data-link-type="mega-nav">PMN Events</a>
+                                                        </li>
+                                                        <li class="">
+                                                            <a href="http://www.philly.com/philly/horoscopes/" class="bl" data-link-type="mega-nav">Horoscope</a>
+                                                        </li>
+                                                        <li class="">
+                                                            <a href="http://www.philly.com/philly/news/lottery/" class="bl" data-link-type="mega-nav">Lottery</a>
+                                                        </li>
+                                                        <li class="">
+                                                            <a href="http://www.philly.com/philly/news/weather/" class="bl" data-link-type="mega-nav">Weather</a>
+                                                        </li>
+                                                        <li class="">
+                                                            <a href="http://www.philly.com/philly/newsletters/" class="bl" data-link-type="mega-nav">Newsletters</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <!-- /.secondary-nav__group -->
+
+                                            <div class="secondary-nav__group">
+                                                <div class="secondary-nav__link-list font--m">
+                                                    <h2 class="heading__secondary heading__secondary--s space--btm">Get In Touch
+                                                        <em></em>
+                                                    </h2>
+                                                    <ul class="secondary-nav__link-list font--m">
+                                                        <li class="light">
+                                                            <a href="http://www.philly.com/philly/about/advertise/" class="bl" data-link-type="mega-nav">Advertise</a>
+                                                        </li>
+                                                        <li class="light">
+                                                            <a href="http://www.philly.com/philly/about/feedback/" class="bl" data-link-type="mega-nav">Contact Us</a>
+                                                        </li>
+                                                        <li class="light">
+                                                            <a href="https://olt.theygsgroup.com/philly/" class="bl" data-link-type="mega-nav">Permissions</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <!-- /.secondary-nav__group -->
+                                        </nav>
+                                        <!-- /.secondary-nav -->
+                                    </div>
+                                    <!-- /.section-nav__inner_wrap -->
+                                </div>
+                                <!-- /.section-nav__wrap -->
+                            </div>
+                            <!-- /.section-dropdown__inner -->
+                        </div>
+                        <!-- /.section-dropdown__wrap -->
+                        <!-- END: Dropdown Wrap -->
+
+                    </div>
+                    <!-- /.rel -->
+                </section>
+            </header>
+        </div>
+        <style>
+            /*
+               .article__content{
+                       margin: 0;
+               }
+               .article__content .headerIntro,
+               .article__content>div{
+                       max-width: 100%;
+                       margin-left: 0;
+                       margin-right: 0;
+                       margin-bottom: 0;
+               }
+               .article__content .container{
+                       margin-right: auto;
+                       margin-left: auto;
+                       padding-left: 15px;
+                       padding-right: 15px;
+               }
+        */
+            .Mg2-connext.phl-styles.paywall {
+                display: block !important;
+                margin: 0 auto !important;
+            }
+            /*
+               @media only screen and (min-width: 1200px){
+                       .article__content > div.fullimage {
+                               margin-left: 8%;
+                               margin-right: 8%;
+                       }
+               }
+       */
+       .adUnit {
+           background: #eee;
+       }
+        </style>
+        <!-- This is not isBrandedContent -->
+        <div class="article__content_lf" itemprop="articleBody">

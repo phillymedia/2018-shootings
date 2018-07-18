@@ -1,29 +1,12 @@
+console.log(byDate)
+
 const tippy = require('tippy.js')
 var now = new Date();
 var calendar_data = require("./2018-shootings.geo.json");
 var count_range = [];
-var month = new Array();
-month[0] = "January";
-month[1] = "February";
-month[2] = "March";
-month[3] = "April";
-month[4] = "May";
-month[5] = "June";
-month[6] = "July";
-month[7] = "August";
-month[8] = "September";
-month[9] = "October";
-month[10] = "November";
-month[11] = "December";
+var month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 
-var weekday = new Array(7);
-weekday[0] = "Sunday";
-weekday[1] = "Monday";
-weekday[2] = "Tuesday";
-weekday[3] = "Wednesday";
-weekday[4] = "Thursday";
-weekday[5] = "Friday";
-weekday[6] = "Saturday";
+var weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
 Date.prototype.toISODate = function() {
   return this.getFullYear() + '-' +
@@ -81,7 +64,7 @@ function normalize(val) {
 // });
 // console.log(Math.max.apply(null, count_range));
 
-var color_ramp = ['#f0f921', '#d4d93e', '#b7b94e', '#9b9a57', '#7f7d5d', '#616161']
+var color_ramp = ['#f0f921', '#ccd237', '#a9ab41', '#888845', '#666546', '#444444']
 
 $(".day").each(function() {
   var count_day = $(this).find(".day-inner").attr("data-count");

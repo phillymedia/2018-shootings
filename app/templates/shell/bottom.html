@@ -1,0 +1,134 @@
+</div>
+
+
+<div class="footerWrapper">
+<div class="footerInner">
+<div class="footerCopywrite">
+    &#169; Copyright 2018 Philadelphia Media Network (Digital), LLC</div>
+</div>
+</div>
+</div></div>
+
+<script>
+// BEGIN Sticky Nav
+window.stickyNavLastYOffset = 0;
+window.headerTopPosition = 0;
+
+/**
+ * Collapse the navigation bar when user scrolls down and expand the navigation bar when user scrolls up
+ * More information: WWW-723
+ */
+function updateNavPosition () {
+  var offset = window.pageYOffset < 0 ? 0 : window.pageYOffset;
+  var headerOffset = $('#header').offset().top;
+  var minHeight = $('#header .header--primary').height() + $('#header .progress').height();
+  var scrolledDelta = offset - stickyNavLastYOffset;
+
+  if (window.innerWidth < 750) {
+    minHeight = $('#header').height();
+    // Extend hamburger menu to bottom (WWW-782)
+    $('.section-nav__inner_wrap').css('max-height', '');
+  } else {
+    // Extend hamburger menu to bottom (WWW-782)
+    var temp = window.innerHeight - ($('#header .primary-nav__wrap').height() + $('#header .progress').height());
+    if (temp > 880) temp = 880;
+    $('.section-nav__inner_wrap').css('max-height', temp.toString() + 'px');
+  }
+  // Scroll down
+  if (scrolledDelta > 0) {
+    var newPosition = headerTopPosition + scrolledDelta;
+    headerTopPosition = (newPosition < minHeight) ? newPosition : minHeight;
+    $('#header').css('top', -headerTopPosition + 'px');
+  } else {
+    // Scroll up
+    var newPosition = headerTopPosition + scrolledDelta;
+    headerTopPosition = (newPosition > 0) ? newPosition : 0;
+    $('#header').css('top', -headerTopPosition + 'px');
+  }
+
+  stickyNavLastYOffset = offset;
+}
+
+$(document).ready(function () {
+  window.addEventListener('scroll', function () {
+    updateNavPosition();
+  });
+
+  window.addEventListener('resize', function () {
+    updateNavPosition();
+  });
+});
+// END Sticky Nav
+
+
+    (function() {
+        // only want one resizer on the page
+        if (document.documentElement.className.indexOf("g-resizer-v3-init") > -1) return;
+        document.documentElement.className += " g-resizer-v3-init";
+        // require IE9+
+        if (!("querySelector" in document)) return;
+        function resizer() {
+            var elements = Array.prototype.slice.call(document.querySelectorAll(".g-artboard[data-min-width]")),
+                widthById = {};
+            elements.forEach(function(el) {
+                var parent = el.parentNode,
+                    width = widthById[parent.id] || parent.getBoundingClientRect().width,
+                    minwidth = el.getAttribute("data-min-width"),
+                    maxwidth = el.getAttribute("data-max-width");
+                widthById[parent.id] = width;
+                if (+minwidth <= width && (+maxwidth >= width || maxwidth === null)) {
+                    el.style.display = "block";
+                } else {
+                    el.style.display = "none";
+                }
+            });
+            try {
+                if (window.parent && window.parent.$) {
+                    window.parent.$("body").trigger("resizedcontent", [window]);
+                }
+                if (window.require) {
+                    require(['foundation/main'], function() {
+                        require(['shared/interactive/instances/app-communicator'], function(AppCommunicator) {
+                            AppCommunicator.triggerResize();
+                        });
+                    });
+                }
+            } catch(e) { console.log(e); }
+        }
+        document.addEventListener('DOMContentLoaded', resizer);
+        // feel free to replace throttle with _.throttle, if available
+        window.addEventListener('resize', throttle(resizer, 200));
+        function throttle(func, wait) {
+            // from underscore.js
+            var _now = Date.now || function() { return new Date().getTime(); },
+                context, args, result, timeout = null, previous = 0;
+            var later = function() {
+                previous = _now();
+                timeout = null;
+                result = func.apply(context, args);
+                if (!timeout) context = args = null;
+            };
+            return function() {
+                var now = _now(), remaining = wait - (now - previous);
+                context = this;
+                args = arguments;
+                if (remaining <= 0 || remaining > wait) {
+                    if (timeout) {
+                        clearTimeout(timeout);
+                        timeout = null;
+                    }
+                    previous = now;
+                    result = func.apply(context, args);
+                    if (!timeout) context = args = null;
+                } 
+                return result;
+            };
+        }
+
+    })();
+
+</script>
+
+
+</body>
+</html>

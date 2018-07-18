@@ -1,0 +1,584 @@
+@import "philly-styles/values";
+
+.headerIntro {
+    position: relative;
+    width: auto;
+    height: auto;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#backgroundImage-1 {
+    background-image: url("http://media.philly.com/images/102515-Philadelphia-skyline.jpg");
+    background-position: center top;
+    @include tablet {
+        background-position: center top;
+        background-size: contain;
+    }
+}
+
+#backgroundImage-2 {
+    background-image: url("http://media.philly.com/images/102515-Philadelphia-skyline.jpg");
+    background-position: center;
+    @include tablet {
+        background-size: cover;
+    }
+}
+
+.backgroundImage {
+    position: relative;
+    width: auto;
+    height: 100%;
+    height: 100vh;
+    min-height: 750px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #000;
+    @include tablet {
+        min-height: 500px;
+        min-height: 100%;
+        height: auto;
+        padding-bottom: percentage(800/1200)-5;
+    }
+}
+
+.overlayText {
+    position: absolute;
+    top: auto;
+    bottom: 20%;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    color: #fff;
+    font-family: $philly-sans;
+    font-weight: 600;
+    letter-spacing: -5px;
+    line-height: normal;
+    text-shadow: 0 0 15px #000;
+    font-size: 80px;
+    @include tablet {
+        font-size: 68px;
+        padding: 0 10px;
+    }
+    @include mobile {
+        position: relative;
+        top: inherit;
+        bottom: inherit;
+        color: #000;
+        text-shadow: none !important;
+        padding: 30px 10px 10px;
+        margin-bottom: 0.625rem;
+        font-weight: 800;
+        letter-spacing: -.0625rem;
+        font-size: 2.5rem;
+        line-height: 1.05;
+    }
+}
+
+.backgroundImageCredit {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 11px;
+    color: #fff;
+    z-index: 1;
+    font-family: $philly-sans;
+    @include mobile {
+        bottom: 14px;
+    }
+}
+
+.headerSection {
+    position: relative;
+    z-index: 5;
+    padding: 20px 12px;
+    margin: 0 auto;
+    @include mobile {
+        padding-top: 5px;
+        padding-bottom: 8px;
+    }
+}
+
+.headerIntroNoImage {
+    align-items: center;
+    position: relative;
+    width: auto;
+    height: auto;
+    @include display-flex;
+    padding: 80px 8% 40px;
+    justify-content: center;
+    @include tablet {
+        flex-wrap: wrap;
+        flex-direction: column;
+        padding: 45px 15px 30px;
+    }
+    @include mobile {
+        padding: 45px 15px 0;
+    };
+
+    .headerSectionNoImage {
+        @include display-flex;
+        @include flex(0 1 auto);
+        text-align: center;
+        flex-wrap: wrap;
+        flex-direction: column;
+        position: relative;
+        z-index: 5;
+        margin: 0 auto;
+        max-width: 700px;
+        @include mobile {
+            padding: 5px 0 8px;
+        }
+
+        .overlayText {
+            position: relative;
+            text-align: center;
+            color: #eee;
+            font-family: $philly-sans;
+            font-weight: 800;
+            line-height: normal;
+            letter-spacing: -1px;
+            font-size: 55px;
+            text-shadow: none;
+            @include tablet {
+                padding: 0 10px 20px;
+                position: relative;
+                font-size: 38px;
+            }
+            @include mobile {
+                padding: 0;
+                line-height: 39.9px;
+            }
+        }
+
+        .subhead {
+            font-size: 22px;
+            padding-top: 10px;
+            @include mobile {
+                font-size: 18px;
+            };
+        }
+    }
+}
+
+.containerQuote {
+    border-top: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
+    margin-left: -11%;
+    @media (max-width: 992px) {
+        margin-left: 0;
+    }
+    @media (min-width: 992px) {
+        max-width: 46%;
+    }
+}
+
+.containerQuoteText {
+    font-family: $philly-serif;
+    font-weight: 400;
+    line-height: 1.25em;
+    font-size: 38px;
+    text-align: left !important;
+}
+
+.containerQuoteSource {
+    color: #888;
+    font-family: $philly-sans;
+    font-size: 16px;
+}
+
+.BackgroundImageCaption {
+    color: #888;
+    margin-top: -0.75em;
+    margin-left: 1em;
+    font-size: 13px;
+    font-family: $philly-sans;
+    @include mobile {
+        display: none;
+    }
+}
+
+.headDisplay {
+    display: block;
+    position: relative;
+    margin: 10px 0 30px 0;
+
+    p {
+        color: #eee;
+        padding-top: 50px;
+        line-height: 1.4em;
+    }
+    @include tablet {
+        margin-bottom: 15px;
+    };
+}
+
+.subHead {
+    font-family: $philly-serif;
+    margin: 40px auto 20px;
+    font-size: 24px;
+    line-height: 1.5em;
+    font-weight: bold;
+    @include mobile {
+        margin: 20px auto 15px;
+    }
+}
+
+.byline {
+    line-height: 2.25em;
+    top: 15px;
+    font-family: $philly-sans;
+    color: #eee;
+    font-size: 16px;
+
+    a {
+        color: #eee;
+    }
+}
+
+.dateline {
+    font-family: $philly-sans;
+    color: #eee;
+    font-size: 12px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    line-height: 2.25em;
+    clear: both;
+    @include mobile {
+        padding-top: 30px;
+    }
+}
+
+.bodyContainer {
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+.imagebreak {
+    margin: 40px 0 50px;
+    @include mobile {
+        margin: 18px 0 30px;
+    }
+}
+
+.pull-right {
+    @include mobile {
+        padding: 15px 0 20px 0 !important;
+        margin: 0;
+    };
+}
+
+.centerFloat {
+    float: none !important;
+    margin: 50px auto;
+    @include mobile {
+        margin: 20px auto;
+    };
+}
+
+.largeRight {
+    @include BS-medium {
+        margin-right: -25%;
+        margin-left: 50px;
+        margin-bottom: 40px;
+    };
+}
+
+.dropCap {
+    float: left;
+    color: #222;
+    font-size: 59px;
+    padding-top: 18px;
+    padding-right: 8px;
+    font-weight: 100;
+    padding-left: 3px;
+    font-family: $philly-serif;
+}
+
+.containerPhotoCredit {
+    padding: 0 12px;
+}
+
+.containerPhotoCaption {
+    margin-top: 0.5em;
+    padding: 0 12px;
+}
+// ----------- ADS CSS --------------------
+
+.adUnitWrapper {
+    padding: 0 !important;
+}
+
+.adUnitWrapper {
+    background-color: transparent !important;
+    /*overrides the default grey*/
+}
+// ----------- RECIRC BOX --------------------
+
+#379984091 {
+    margin: 0 3%;
+}
+
+h1.sf-header__heading.dib.va--middle {
+    max-width: 1200px;
+    margin: 20px auto 30px;
+    display: block;
+    font-weight: 100;
+}
+
+#recircBox {
+    overflow: hidden;
+    font-family: $philly-sans;
+    background-color: #222222;
+    color: #ffffff;
+    padding: 11px;
+    border-top: 7px solid #B63321;
+}
+
+#recircSpecials {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.black,
+.black a {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.gray--dark-5,
+.gray--dark-5 a {
+    color: #ffffff;
+    font-weight: 600;
+}
+// .block__list-item-flex.with-dividers {
+//     border-right: 1px solid #545454;
+// }
+
+.kicker {
+    color: #E86A58;
+    display: none;
+}
+// -----------BOOTSTRAP FIX--------------------
+
+body,
+html {
+    font-size: 16px !important;
+    font-family: $philly-sans;
+}
+
+.rel.primary-nav__wrap.ovh {
+    font-family: $philly-sans;
+}
+
+p {
+    font-family: $philly-serif;
+    margin-bottom: 1.25em !important;
+    font-size: 18px;
+    line-height: 1.9em;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -webkit-text-size-adjust: none;
+    -moz-osx-font-smoothing: grayscale;
+    @include mobile {
+        font-size: 16px;
+        line-height: 1.6rem;
+    };
+}
+// .progress {
+//     position: fixed !important;
+//     left: 0;
+//     top: 0;
+//     width: 100%;
+//     height: 0.25rem !important;
+//     -webkit-appearance: none;
+//     -moz-appearance: none;
+//     border: none;
+//     background-color: #B63321 !important;
+//     color: #B63321 !important;
+//     z-index: 1000;
+// }
+
+.video {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+@media screen and (max-width: 600px) {
+    .extrabottompadding {
+        padding-bottom: 15px;
+    }
+
+    .containerCarouselCaption {
+        bottom: -70px !important;
+    }
+
+    .containerVideoCaption {
+        bottom: -45px !important;
+    }
+}
+
+.bodyContainer p {
+    a {
+        cursor: pointer;
+        color: #0061A2;
+        box-shadow: inset -2px -5px 0 -2px #d5eeff;
+        @include transition(box-shadow 0.3s cubic-bezier(0.86, 0, 0.07, 1));
+    }
+}
+
+.bodyContainer p {
+    a:hover {
+        box-shadow: inset -2px -20px 0 -3px #d5eeff;
+        text-decoration: none;
+    }
+}
+
+.linkBox {
+    padding: 25px;
+    margin: 0 20px 20px 0;
+    background-color: #ededed;
+    min-width: 200px;
+
+    .linkHeader {
+        font-size: 105%;
+        font-weight: bold;
+        padding-bottom: 5px;
+        color: #222;
+    }
+
+    .linkItem {
+        padding: 4px 0;
+    }
+
+    a {
+        @include box-shadow(none);
+    }
+}
+
+.right.carousel-control {
+    background-image: none;
+    color: #000;
+    margin-right: -10%;
+}
+
+.left.carousel-control {
+    background-image: none;
+    color: #000;
+    margin-left: -9.8%;
+}
+
+.containerCarouselCaption {
+    bottom: -70px !important;
+}
+
+.dropcap::first-letter {
+    // font-stretch: normal;
+    // font-style: normal;
+    // font-weight: normal;
+    // float: left;
+    // font-size: 90px;
+    // line-height: 1;
+    // margin: 7px 20px 10px 0;
+    // padding: 15px 30px;
+    // text-transform: capitalize;
+    font-family: $philly-serif;
+    font-style: normal;
+    line-height: 1;
+    font-size: 4em;
+    color: #3b3b3b;
+    display: block;
+    float: left;
+    margin: 0 0.3em -0.2em 0;
+}
+
+.emailSubscribeBox {
+    float: right;
+    max-width: 250px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+    background: #eee;
+    padding: 15px;
+    @include mobile {
+        float: none;
+        max-width: 100%;
+        margin-left: 0;
+    };
+
+    p.subscribeText {
+        font-family: $philly-sans;
+        line-height: 1.4em;
+        font-size: 1em;
+        margin-bottom: 10px;
+
+        strong {
+            font-size: 1.1em;
+            font-weight: 900;
+            display: block;
+            margin-bottom: 10px;
+        }
+    }
+
+    button {
+        color: white;
+        font-size: 15px;
+        background: $philly-red;
+        font-weight: 700;
+        border-radius: 5px;
+        // margin-left: auto;
+        // margin-right: auto;
+        // display: block;
+    }
+}
+
+.left-pullquote {
+    width: 48%;
+    margin-right: 5%;
+    margin-bottom: 1.25rem;
+    float: left;
+    position: relative;
+    font-family: $philly-sans;
+    @include BS-medium {
+        margin-left: -12%;
+    }
+    @include tablet {
+        margin-left: 15px;
+    };
+    @include mobile {
+        margin: 0;
+        width: 100%;
+        margin: 0;
+        padding: 15px;
+    };
+
+    .quotetext {
+        padding-top: 10px;
+        font-size: 1.65rem;
+        line-height: 1.2;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .quotesource {
+        text-transform: uppercase;
+        // text-align: right;
+        font-weight: 100;
+        padding-top: 10px;
+    }
+
+    svg {
+        // width: 25px;
+        // height: 25px;
+        fill: $philly-red;
+        // @include transform(rotate(45deg));
+        position: absolute;
+        left: -18px;
+        top: -18px;
+        @include mobile {
+            left: -5px;
+            top: -5px;
+        };
+    }
+}
