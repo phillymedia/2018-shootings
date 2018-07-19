@@ -187,10 +187,25 @@ svg {
 }
 
 .lastupdated {
-    font-size: 14px;
-    color: #999;
+    font-size: 16px;
+    color: #b1b1b1;
     font-family: $philly-sans;
     margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.footerContent {
+    font-size: 16px;
+    line-height: 1.8em;
+    color: #b1b1b1;
+    font-family: $philly-sans;
+    margin-top: 10px;
+    margin-bottom: 60px;
+
+     a {
+         color: #c1bebe;
+         text-decoration: underline;
+     }
 }
 
 .slider {

@@ -38,9 +38,11 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    max-width: 1000px;
+    // max-width: 1000px;
     margin: 100px auto;
     padding-top: 100px;
+    margin-left: -2%;
+    margin-right: -2%;
   }
 }
 
