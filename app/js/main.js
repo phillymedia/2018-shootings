@@ -229,7 +229,8 @@ function makeMap() {
 
 function makeCalendar() {
     const tippy = require('tippy.js')
-    var now = new Date(updated);
+    var now = new Date(updated.slice(0, -1));
+    console.log(now);
     // var calendar_data = require("./2018-shootings.geo.json");
     var calendar_data = byDate;
     var count_range = [];
@@ -256,7 +257,7 @@ function makeCalendar() {
         var iso = d.toISODate();
         var month_cur;
         if (d.getMonth() !== month_index) {
-            $("#calendar").append("<div class='month' id='" + months[d.getMonth()] + "'><div class='title'>" + months[d.getMonth()] + "</div><div class='month-inner'></div></div>")
+            $("#calendar").append("<div class='month' id='" + months[d.getMonth()] + "'><div class='title'>" + months[d.getMonth()] + "</div><div class='month-inner'><div class='day' data-longdate='" + d.toDateString() + "' data-day='" + d.getDay() + "' data-date='" + iso + "'><div class='day-inner' data-count='0'></div></div></div></div>")
             month_cur = "#" + months[d.getMonth()];
         }
         if (d.getMonth() == month_index) {
@@ -335,11 +336,11 @@ function makeCalendar() {
             $(this).find(".day-inner").css("background-color", color_ramp[3])
         }
 
-        if (normalize(count_day) < 0.3 && normalize(count_day) >= 0.1) {
+        if (normalize(count_day) < 0.3 && normalize(count_day) > 0) {
             $(this).find(".day-inner").css("background-color", color_ramp[4])
         }
 
-        if (normalize(count_day) < 0.1) {
+        if (normalize(count_day) == 0) {
             $(this).find(".day-inner").css("background-color", color_ramp[5])
         }
 
@@ -366,7 +367,7 @@ function makeCalendar() {
     $("#calendar").before("<div id='calendar-legend'><span>Number of shootings per day</span><div id='calendar-legend-inner'></div></div>");
     var i;
     for (i = 0; i < count_legend.length; i++) {
-        $("#calendar-legend-inner").prepend("<div class='legend-interval'><span class='color-key' style='background-color:" + color_ramp[i] + "'></span><span class='text-key'>" + count_legend[i] + "</span></div>")
+        $("#calendar-legend-inner").prepend("<div class='legend-interval'><span class='color-key' style='background-color:" + color_ramp[i] + "'></span><span class='text-key'>" + (count_legend[count_legend.length - (i + 1)]) + "</span></div>")
     }
 
     tippy('.day', {
