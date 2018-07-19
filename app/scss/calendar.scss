@@ -24,6 +24,9 @@ body {
         height: 10px;
         display: block;
         margin-bottom: 10px;
+        @include mobile {
+          width: 30px;
+        }
       }
 
       .text-key {
@@ -50,6 +53,13 @@ body {
   width: 100%;
   max-width: 21%;
   margin: 2%;
+  @include tablet {
+    max-width: 46%;
+  }
+  @include mobile {
+    margin: 2% 15%;
+    max-width: none;
+  }
 
   .title {
     color: #aaa;
