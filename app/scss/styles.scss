@@ -248,3 +248,28 @@ svg {
     font-weight: 900;
     filter: drop-shadow(1px 2px #7a2ab1);
 }
+
+
+.mapCover {
+    position: absolute;
+    background: rgba(black,0.5);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10000;
+    @include display-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    .playButton {
+        font-size: 55px;
+        font-weight: 50;
+        text-transform: uppercase;
+        font-family: $philly-sans;
+        color: #ddd;
+        letter-spacing: 2px;
+    }
+
+}
