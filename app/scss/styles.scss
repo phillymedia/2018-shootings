@@ -5,13 +5,35 @@
 $colors: #0d0887,#42039d,#6b00a8,#900da3,#b12a90,#cb4778,#e16461,#f3834c,#fca736,#fdce25,#f0f921;
 $numColors: length($colors);
 
+$day: #f0f921;
+
+$all:#a960db;
+$allshadow:#7a2ab1;
+
+// $all:#f0f921;
+// $allshadow:#ced700;
+
+$purple:#a960db;
+$purpleshadow:#7a2ab1;
+
+$red:#f22822;
+$redshadow:#c1150f;
+
 svg {
     max-width: none;
     max-height: none;
 }
 
 .darkbg {
-    background: black;
+    background: #1c1c1c;
+
+    p {
+        color: #eee;
+        color: #eee;
+        line-height: 1.5em;
+        font-family: $philly-sans;
+        font-size: 17px;
+    }
 }
 
 .leaflet-container {
@@ -100,12 +122,12 @@ svg {
     }
 
     50% {
-        fill: #f0f921;
+        fill: $day;
     }
 
     100% {
         opacity: 0.85;
-        fill: #7a2ab1;
+        fill: $all;
     }
 }
 
@@ -122,12 +144,12 @@ svg {
     }
 
     50% {
-        fill: #f0f921;
+        fill: $day;
     }
 
     100% {
         opacity: 0.85;
-        fill: #f22822;
+        fill: $red;
     }
 }
 
@@ -137,18 +159,19 @@ svg {
 
 .slideback {
     @include animation(none);
-    fill: #7a2ab1 !important;
+    fill: $all !important;
     opacity: 0.85;
 }
 
 .Fatalslider {
-    fill: #f22822 !important;
+    fill: $red !important;
 }
 // .selectedslider {
 //     fill: #f0f921 !important;
 // }
 
 .labelWrapper {
+    font-family: $philly-sans;
     width: 300px;
     position: absolute;
     z-index: 100;
@@ -160,6 +183,26 @@ svg {
     font-size: 14px;
     text-transform: uppercase;
     // background: black;
+    @include tablet {
+        @include flex(1 1 100%);
+        @include display-flex;
+        flex-wrap: wrap;
+        position: relative;
+        padding: 0;
+        width: 100%;
+        bottom: unset;
+        right: unset;
+        text-align: left;
+        align-items: center;
+        align-content: center;
+        line-height: 1.2em;
+        margin-bottom: 10px;
+        // justify-content: space-between;
+        span {
+            padding-right: 10px;
+            max-width: 92px;
+        }
+    };
 }
 
 .datecontainer {
@@ -167,23 +210,33 @@ svg {
     color: #ccc;
     font-family: $philly-sans;
     font-weight: 900;
+    @include tablet {
+        font-size: 20px;
+    };
 }
 
 .numCounter {
     font-size: 45px;
-    color: #a960db;
+    color: $all;
     font-family: $philly-sans;
     font-weight: 900;
-    filter: drop-shadow(1px 2px #7a2ab1);
+    filter: drop-shadow(1px 2px $allshadow);
     padding-bottom: 10px;
+    @include tablet {
+        padding: 0 20px 0 0;
+        font-size: 35px;
+    };
 }
 
 .numCounterDeath {
     font-size: 45px;
-    color: #f22822;
+    color: $red;
     font-family: $philly-sans;
     font-weight: 900;
-    filter: drop-shadow(1px 2px #c1150f);
+    filter: drop-shadow(1px 2px $redshadow);
+    @include tablet {
+        font-size: 35px;
+    };
 }
 
 .lastupdated {
@@ -202,10 +255,10 @@ svg {
     margin-top: 10px;
     margin-bottom: 60px;
 
-     a {
-         color: #c1bebe;
-         text-decoration: underline;
-     }
+    a {
+        color: #c1bebe;
+        text-decoration: underline;
+    }
 }
 
 .slider {
@@ -228,7 +281,7 @@ svg {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background: #f0f921;
+    background: $day;
     cursor: pointer;
 }
 
@@ -236,7 +289,7 @@ svg {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background: #f0f921;
+    background: $day;
     cursor: pointer;
 }
 
@@ -255,36 +308,91 @@ svg {
 .slidecontainer {
     position: relative;
     margin-bottom: 15px;
+    @include tablet {
+        @include flex(1 1 100%);
+        margin-bottom: 0;
+    }
 }
 
 .overlayText .shootingnum {
-    color: #a960db;
+    color: $all;
     font-family: $philly-sans;
     font-weight: 900;
-    filter: drop-shadow(1px 2px #7a2ab1);
+    filter: drop-shadow(1px 2px $allshadow);
 }
-
 
 .mapCover {
     position: absolute;
-    background: rgba(black,0.5);
+    background: transparent;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     z-index: 10000;
-    @include display-flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+}
 
-    .playButton {
-        font-size: 55px;
-        font-weight: 50;
-        text-transform: uppercase;
-        font-family: $philly-sans;
-        color: #ddd;
-        letter-spacing: 2px;
+.covered {
+    .leaflet-top {
+        opacity: 0.3 !important;
+    }
+    .leaflet-touch .leaflet-bar {
+        pointer-events: none !important;
     }
 
+    .slider {
+        background: rgba(134, 134, 134, 0.6) !important;
+    }
+
+    #map {
+        pointer-events: none !important;
+    }
+}
+
+.leaflet-top {
+    @include transition(opacity .4s ease);
+    opacity: 1;
+}
+.slider {
+    @include transition(background .4s ease);
+}
+
+
+
+#share-bar-bottom {
+    background: transparent;
+}
+
+.subHeadline {
+    color: #eee;
+    font-family: $philly-sans;
+    font-weight: 800;
+    line-height: normal;
+    letter-spacing: -1px;
+    font-size: 35px;
+    margin-top: 40px;
+    margin-bottom: 10px;
+
+    a {
+        color: #fff;
+        font-size: 30px;
+    }
+
+    @include mobile {
+        margin-top: 35px;
+    };
+}
+
+
+.adUnitWrapper {
+    margin: 30px auto;
+
+    @include mobile {
+        margin: 15px auto;
+    };
+}
+
+
+.noX {
+    opacity: 0 !important;
+    visibility: hidden;
 }

@@ -3,9 +3,22 @@
 .aspect-ratio-outer {
   width: 100%;
   position: relative;
+  max-width: 1170px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 30px;
+
   .aspect-ratio-inner {
-    height: 84vh;
+    height: 80vh;
     position: relative;
+    margin-left: 15px;
+    margin-right: 15px;
+
+    @include tablet {
+        height: auto;
+        @include display-flex;
+        flex-wrap: wrap;
+    };
   }
   #map {
     position: absolute;
@@ -14,6 +27,20 @@
     width: 100%;
     height: 100%;
     border: 1px solid #333;
+
+    @include tablet {
+        position: relative;
+        @include flex(1 1 100%);
+        top: unset;
+        left: unset;
+        width: unset;
+        height: unset;
+        min-height: 70vh;
+    };
+
+    @include mobile {
+        min-height: 55vh;
+    };
   }
 }
 .map-container {

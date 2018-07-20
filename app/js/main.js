@@ -1,23 +1,13 @@
+require("leaflet");
 require("./L.SvgScaleOverlay");
 
 var json1 = require("./disolved1.json");
 var json2 = require("./disolved2.json");
 var json3 = require("./disolved3.json");
 
-var months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December'
-]
+var data17 = require("./2017data.json");
+
+var months = ['January','February','March','April','May','June','July','August','September','October','November','December']
 
 function getTheMonth(m) {
     return months[Number(m) - 1]
@@ -32,15 +22,97 @@ var byDate;
 $(document).ready(function() {
 
     slider = document.getElementById("myRange");
+    // fetch('http://data.philly.com/philly/crime/shootings/data/index_2018.php').then((resp) =>
+    // fetch('https://phl.carto.com/api/v2/sql?q=SELECT%20*%20FROM%20shootings%20WHERE%20year%20=%202018').then((resp) =>
+    fetch('http://data.philly.com/philly/crime/shootings/data/index_2018.php').then((resp) => resp.json()).then(function(data) {
+        console.log("data loaded");
+        newMapData = data.rows;
 
-    lmap = L.map('map').setView([
-        39.9826, -75.1652
-    ], 12);
+        byDate = newMapData.slice(0);
+        byDate.sort(function(a, b) {
+            return new Date(a.date_) - new Date(b.date_);
+        });
+        $(".shootingnum").html(byDate.length);
+
+        // animateValue("numValue", 0, byDate.length, 1000);
+
+        updated = (byDate.map(function(e) {
+            return e.date_
+        }).sort().reverse()[0]);
+
+
+
+        var toDate2017=0;
+
+        data17.rows.forEach(function(r, i){
+            if(r.date_.slice(5,10).replace("-","") < updated.slice(5,10).replace("-","")) {
+                toDate2017++;
+            }
+        })
+
+        if(toDate2017 > byDate.length) {
+            $(".introtextblock").append(`, a decrease of ${toDate2017 - byDate.length} (${((byDate.length-toDate2017)/toDate2017).toFixed(3)*-100}%) from last year's total on this date.`)
+        } else if (toDate2017 < byDate.length) {
+            $(".introtextblock").append(`, an increase of ${byDate.length-toDate2017} (${((byDate.length-toDate2017)/toDate2017).toFixed(3)*100}%) from last year's total on this date.`)
+        } else {
+            $(".introtextblock").append(`There were also <strong>${toDate2017}</strong> shootings at this point last year.`)
+        }
+
+
+
+        $(".lastupdated").html(`Last updated: ${getTheMonth(updated.slice(5, 7))} ${Number(updated.slice(8, 10))}, 2018`)
+
+        $(".dateupdated").html(`${getTheMonth(updated.slice(5, 7))} ${Number(updated.slice(8, 10))}`)
+        makeCalendar();
+
+        dataloaded = true;
+    })
+})
+var fired = 0;
+var dataloaded = false;
+
+$(window).on("scroll", function() {
+    var a = $(".aspect-ratio-inner").offset().top;
+    var b = $(".aspect-ratio-inner").height();
+    var c = $(window).height();
+    var d = $(window).scrollTop();
+    if ((c + d) > (a + b)) {
+        if (fired == 0 && dataloaded == true && windowLoaded == true) {
+            fired = 1;
+            makeMap();
+        } else { return }
+    }
+})
+
+var windowLoaded = false;
+
+$(window).load(function() {
+    windowLoaded = true;
+    if ($(window).width() > 500) {
+        lmap = L.map('map', {
+            minZoom: 11,
+            maxZoom: 15,
+            zoomAnimation: false
+        }).setView([
+            39.9826, -75.1652
+        ], 12);
+    } else {
+        lmap = L.map('map', {
+            minZoom: 10,
+            maxZoom: 13,
+            zoomAnimation: false
+        }).setView([
+            39.9826, -75.1652
+        ], 11);
+    }
+
 
     L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}' + (
-        L.Browser.retina
-        ? '@2x'
-        : '') + '.png', {attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy;<a href="https://carto.com/attribution">CARTO</a>'}).addTo(lmap);
+        L.Browser.retina ?
+        '@2x' :
+        '') + '.png', {
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy;<a href="https://carto.com/attribution">CARTO</a>'
+    }).addTo(lmap);
 
     lmap.scrollWheelZoom.disable();
 
@@ -52,49 +124,23 @@ $(document).ready(function() {
         'fillOpacity': 0.65
     };
 
-    L.geoJson(json1, {style: myStyle}).addTo(lmap);
-    L.geoJson(json2, {style: myStyle}).addTo(lmap);
-    L.geoJson(json3, {style: myStyle}).addTo(lmap);
-
-    fetch('https://phl.carto.com/api/v2/sql?q=SELECT%20*%20FROM%20shootings%20WHERE%20year%20=%202018').then((resp) => resp.json()).then(function(data) {
-        console.log("data loaded");
-        newMapData = data.rows;
-
-        byDate = newMapData.slice(0);
-        byDate.sort(function(a, b) {
-            return new Date(a.date_) - new Date(b.date_);
-        });
-        $(".shootingnum").html(byDate.length);
-
-        animateValue("numValue", 0, byDate.length, 1000);
-
-        updated = (byDate.map(function(e) {
-            return e.date_
-        }).sort().reverse()[0]);
-
-        $(".lastupdated").html(`Last updated: ${getTheMonth(updated.slice(5, 7))} ${Number(updated.slice(8, 10))}, 2018`)
-
-        $(".dateupdated").html(`${getTheMonth(updated.slice(5, 7))} ${Number(updated.slice(8, 10))}`)
-        makeCalendar();
-        //
-
-        $(".mapCover").on("click", function() {
-            setTimeout(function () {
-                makeMap();
-            }, 500);
-            $(".mapCover").remove();
-        })
-    })
+    L.geoJson(json1, {
+        style: myStyle
+    }).addTo(lmap);
+    L.geoJson(json2, {
+        style: myStyle
+    }).addTo(lmap);
+    L.geoJson(json3, {
+        style: myStyle
+    }).addTo(lmap);
 })
 // https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}
 // http://{s}.sm.mapstack.stamen.com/(toner-lite,$fff[difference],$000[@60])/{z}/{x}/{y}
 
 function makeMap() {
     var circles;
-
     var svgOverlay = L.SvgScaleOverlay();
     var radius = 3;
-
     var newRadius;
 
     svgOverlay.onInitData = function() {
@@ -129,6 +175,8 @@ function makeMap() {
                     elem.attr('cy', point.y)
                     elem.attr('r', radius * 2);
                     elem.transition().duration(500).attr("r", radius);
+                } else {
+                    elem.attr('opacity','0')
                 }
 
                 if (d.fatal > 0) {
@@ -141,7 +189,7 @@ function makeMap() {
 
                 slider.value = Date.parse(d.date_);
 
-            }, 1500 * mulitplyer)
+            }, 1250 * mulitplyer)
 
             // }
 
@@ -173,6 +221,11 @@ function makeMap() {
         var newdate;
 
         circles.each(function(d, i) {
+
+            if (!d.point_x) {d3.select(this).classed('noX', true)}
+
+
+
             d3.select(this).classed('slideback', false)
             d3.select(this).classed('Fatalslider', false)
 
@@ -194,7 +247,7 @@ function makeMap() {
 
                 if (Math.abs(Date.parse(d.date_) - slider.value) < 60000000) {
                     d3.select(this).style("stroke", '#f0f921');
-                    if(newRadius) {
+                    if (newRadius) {
                         d3.select(this).attr('r', newRadius * 2);
                         d3.select(this).style("stroke-width", newRadius);
                     } else {
@@ -204,7 +257,7 @@ function makeMap() {
                     // d3.select(this).style("stroke-width", '4');
 
                 } else {
-                    if(newRadius) {
+                    if (newRadius) {
                         d3.select(this).attr('r', newRadius);
                         d3.select(this).style("stroke-width", newRadius);
                     } else {
@@ -216,6 +269,7 @@ function makeMap() {
 
                 }
             }
+
         })
 
         $(".numCounterDeath").html($(".Fatalslider").length)
@@ -225,14 +279,48 @@ function makeMap() {
         $(".datecontainer").html(getTheMonth(newdate.slice(5, 7)) + " 2018")
         $(".sliderdate").html(`${getTheMonth(newdate.slice(5, 7))} ${Number(newdate.slice(8, 10))}`)
     }
+
+    setTimeout(function() {
+        $(".mapCover").remove()
+        $(".covered").removeClass('covered');
+    }, 1250 * ((Date.parse(updated) - 1514782800000) / 1000000000));
 }
 
 function makeCalendar() {
     const tippy = require('tippy.js')
     var now = new Date(updated.slice(0, -1));
-    console.log(now);
     // var calendar_data = require("./2018-shootings.geo.json");
     var calendar_data = byDate;
+
+    var byDateObject = {};
+    var allDates = [];
+    var maxDay;
+    var maxDayName;
+
+    var lastDay;
+
+
+    calendar_data.forEach(function(r) {
+        if (!byDateObject[r.date_]) byDateObject[r.date_] = [];
+        byDateObject[r.date_].push(r);
+
+        if (allDates.indexOf(r.date_) == -1) {
+            allDates.push(r.date_)
+        }
+    })
+
+    allDates.forEach(function(d) {
+        if (!maxDay || byDateObject[d].length > maxDay) {
+            maxDay = byDateObject[d].length;
+            maxDayName = d;
+        }
+
+    })
+
+
+    $(".calendarText").html(`${getTheMonth(maxDayName.slice(5,7))} ${maxDayName.slice(8,10)} saw the most shooting victims this year, with <strong>${maxDay}</strong> total. Select a square to see the number of shootings for that day.`);
+
+
     var count_range = [];
 
     var weekday = [
@@ -247,9 +335,9 @@ function makeCalendar() {
 
     Date.prototype.toISODate = function() {
         return this.getFullYear() + '-' + (
-        '0' + (
-        this.getMonth() + 1)).slice(-2) + '-' + (
-        '0' + this.getDate()).slice(-2);
+            '0' + (
+                this.getMonth() + 1)).slice(-2) + '-' + (
+            '0' + this.getDate()).slice(-2);
     }
 
     var month_index = -1;
@@ -311,6 +399,14 @@ function makeCalendar() {
         '#444444'
     ]
 
+    // var color_ramp = [
+    //     '#fca736',
+    //     '#d6923d',
+    //     '#b17d41',
+    //     '#8d6a44',
+    //     '#695744',
+    //     '#444444']
+
     $(".day").each(function() {
         var count_day = $(this).find(".day-inner").attr("data-count");
         count_range.push(Number(count_day));
@@ -344,7 +440,7 @@ function makeCalendar() {
             $(this).find(".day-inner").css("background-color", color_ramp[5])
         }
 
-        $(this).attr("title", "<h3>" + $(this).data("longdate") + "</h3><div class='sub'>Number of shootings: " + count_day + "</div>");
+        $(this).attr("title", "<h3>" + $(this).data("longdate") + "</h3><div class='sub'>Number of shooting victims: " + count_day + "</div>");
 
     });
 
@@ -362,12 +458,12 @@ function makeCalendar() {
     var count_legend = [];
     for (var i = 0; i < unique_count.length && count_legend.length < 6; i += count_interval)
         count_legend.push(unique_count[i]);
-    console.log(count_legend)
 
     $("#calendar").before("<div id='calendar-legend'><span>Number of shootings per day</span><div id='calendar-legend-inner'></div></div>");
     var i;
     for (i = 0; i < count_legend.length; i++) {
-        $("#calendar-legend-inner").prepend("<div class='legend-interval'><span class='color-key' style='background-color:" + color_ramp[i] + "'></span><span class='text-key'>" + (count_legend[count_legend.length - (i + 1)]) + "</span></div>")
+        $("#calendar-legend-inner").prepend("<div class='legend-interval'><span class='color-key' style='background-color:" + color_ramp[i] + "'></span><span class='text-key'>" + (
+            count_legend[count_legend.length - (i + 1)]) + "</span></div>")
     }
 
     tippy('.day', {
@@ -381,9 +477,9 @@ function makeCalendar() {
 function animateValue(id, start, end, duration) {
     var range = end - start;
     var current = start;
-    var increment = end > start
-        ? 1
-        : -1;
+    var increment = end > start ?
+        1 :
+        -1;
     var stepTime = Math.abs(Math.floor(duration / range));
     var obj = document.getElementById(id);
     var timer = setInterval(function() {
